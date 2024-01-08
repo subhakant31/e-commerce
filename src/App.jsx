@@ -7,6 +7,7 @@ import Header from "./components/Organisms/Header/Header";
 import { GlobalStyles } from "./styles/globalStyles";
 import Footer from './components/Organisms/Footer/Footer';
 import "./App.css";
+import { Card } from "./components/Molecules/Card/Card";
 function App() {
   const router = createBrowserRouter([
     {
@@ -27,6 +28,8 @@ function App() {
     <>
       <GlobalStyles />
       <Header></Header>
+      <Card />
+      <Footer />
     </>
     // <div>
     //   <RouterProvider router={router} />

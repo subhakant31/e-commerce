@@ -16,10 +16,12 @@ export const FooterContainer = styled.footer`
     flex-basis: 30%;
     .social-icons {
         display: flex;
-        gap: 16px;
+        gap: 28px;
+        padding-top: 18px;
         svg {
             height:28px;
             width:28px;
+            color: #000;
         }
     }
   }
@@ -29,6 +31,9 @@ export const FooterContainer = styled.footer`
     justify-content: space-around;
     ul li {
         padding-bottom: 1em; 
+        a {
+          color:rgba(0, 0, 0, 0.60);
+        }
     }
   }
   .footer-bottom {

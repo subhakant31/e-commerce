@@ -1,11 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import {StyledCard }from "./Card.styled"
 
-export const card = ({primary }) => {
-    const CardMode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+export const Card = () => {
     return (
-       <div>
-       Card
-       </div>
-      );
+      <>
+      <StyledCard>
+         <img  src='./assests/icons/email.png' alt='dummy image' />
+        <div className=''>
+        </div>
+      </StyledCard>
+      </>
+);
 };
+
