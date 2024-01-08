@@ -12,5 +12,6 @@ export const Default = {
   args: {
     text: "FIND CLOTHES THAT MATCHES YOUR STYLE",
     primary: true,
+    centeredText: true,
   },
 };

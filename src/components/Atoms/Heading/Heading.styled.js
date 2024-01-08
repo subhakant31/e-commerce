@@ -7,5 +7,6 @@ export const StyledHeading = styled.div`
     font-family: Satoshi;
     font-weight: 700;
     letter-spacing: 0em;
+    text-align: ${(props) => (props.centeredText ? "center" : "unset")};
   }
 `;

@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { StyledHeading } from "./Heading.styled";
-export const Heading = ({ text, primary, ...props }) => {
+export const Heading = ({ text, primary, centeredText, ...props }) => {
   return (
-    <StyledHeading primary={primary}>
+    <StyledHeading primary={primary} centeredText={centeredText}>
       {primary ? (
         <h1 className='heading'>{text}</h1>
       ) : (
@@ -16,4 +16,5 @@ export const Heading = ({ text, primary, ...props }) => {
 Heading.propTypes = {
   text: PropTypes.string.isRequired,
   primary: PropTypes.bool.isRequired,
+  centeredText: PropTypes.bool.isRequired,
 };
