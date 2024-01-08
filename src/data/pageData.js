@@ -54,36 +54,59 @@ export const headerData = {
 };
 
 export const footerData = {
+  logo: {
+    src: logo,
+    alt: 'Company Logo',
+    width: 100,
+  },
   about: {
-    title: "About Us",
     content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at turpis ac nibh luctus sagittis vel id ex.",
+      "We have clothes that suits your style and which you’re proud to wear. From women to men.",
   },
-  contact: {
-    title: "Contact Us",
-    email: "info@example.com",
-    phone: "+1 (123) 456-7890",
-    address: "123 Main Street, Cityville, State, 12345",
-  },
-  links: {
-    title: "Quick Links",
-    items: [
-      { text: "Home", url: "#" },
-      { text: "Products", url: "#" },
-      { text: "Services", url: "#" },
-      { text: "Contact", url: "#" },
-    ],
-  },
-  social: {
-    title: "Follow Us",
-    icons: [
-      { icon: <FaFacebook />, url: "#" },
-      { icon: <FaTwitter />, url: "#" },
-      { icon: <FaInstagram />, url: "#" },
-    ],
-  },
+  links: [
+    {
+      title: "Company",
+      items: [
+        { text: "About", url: "/" },
+        { text: "Features", url: "/" },
+        { text: "Works", url: "/" },
+        { text: "Career", url: "/" },
+      ],
+    },
+    {
+      title: "Help",
+      items: [
+        { text: "Customer Support", url: "/" },
+        { text: "Delivery Details", url: "/" },
+        { text: "Terms & Conditions ", url: "/" },
+        { text: "Privacy Policy", url: "/" },
+      ],
+    },
+    {
+      title: "Faq",
+      items: [
+        { text: "Account", url: "/" },
+        { text: "Manage Deliveries", url: "/" },
+        { text: " Orders", url: "/" },
+        { text: "Payments", url: "/" },
+      ],
+    }
+  ],
+  icons: [
+    { icon: <FaFacebook />, url: "/" },
+    { icon: <FaTwitter />, url: "/" },
+    { icon: <FaInstagram />, url: "/" },
+  ],
   bottom: {
     copyright:
-      "&copy; 2024 Your Website. All Rights Reserved. | Designed by Your Company",
+      "Shop.co © 2000-2023, All Rights Reserved",
+    paymentCards: [
+      {src: './assests/paymentCards/Apple.png', alt: 'Apple Card'},
+      {src: './assests/paymentCards/Google.svg', alt: 'Google Card'},
+      {src: './assests/paymentCards/Master.svg', alt: 'Master Card'},
+      {src: './assests/paymentCards/Paypal.svg', alt: 'Paypal Card'},
+      {src: './assests/paymentCards/Visa.svg', alt: 'Visa Card'},
+    ]
   },
+
 };
