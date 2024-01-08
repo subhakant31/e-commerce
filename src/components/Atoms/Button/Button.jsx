@@ -13,7 +13,7 @@ Button.propTypes = {
   text: PropTypes.string.isRequired,
   primary: PropTypes.bool,
   size: PropTypes.oneOf(["small", "medium", "large"]),
-  onclick: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
