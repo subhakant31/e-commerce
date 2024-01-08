@@ -5,6 +5,7 @@ import RootLayout from "./components/RootLayout";
 import Header from "./components/Organisms/Header/Header";
 import Footer from './components/Organisms/Footer/Footer';
 import "./App.css";
+import { Card } from "./components/Molecules/Card/Card";
 function App() {
   const router = createBrowserRouter([
     {
@@ -24,6 +25,7 @@ function App() {
   return (
     <>
       <Header></Header>
+      <Card />
       <Footer />
     </>
     // <div>
