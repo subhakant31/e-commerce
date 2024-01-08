@@ -2,8 +2,10 @@ import styled from "styled-components";
 
 export const StyledHeading = styled.div`
   .heading {
-    font-size: ${(props) => (props.primary ? "64px" : "48px")};
-    line-height: ${(props) => (props.primary ? "64px" : "58px")};
+    font-size: ${(props) => ((props.primary === 'large') ? "64px" : 
+    (props.primary === 'medium') ? "48px" : "20px")};
+    line-height: ${(props) => ((props.primary === 'large') ? "64px" :
+    (props.primary === 'medium') ? "58px" : "30px")};
     font-family: Satoshi;
     font-weight: 700;
     letter-spacing: 0em;

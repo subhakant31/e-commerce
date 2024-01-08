@@ -1,7 +1,7 @@
 import React from 'react';
 import { footerData as FooterData } from '../../../data/pageData';
 import { FooterContainer } from './Footer.styled'
-
+import TextParagraph from "../../Atoms/TextParagraph/TextParagraph";
 
 const Footer = () => {
   const { logo, about, bottom, links, icons } = FooterData;
@@ -10,7 +10,7 @@ const Footer = () => {
       <div className='footer-wrapper'>
         <div className='left-container'>
           <img src={logo.src} alt={logo.alt} width={logo.width} />
-          <p>{about.content}</p>
+          <TextParagraph text={about.content} subText={false}/>
           <div className='social-icons'>
           {icons.map((item, index) => (
             <div key={index}>

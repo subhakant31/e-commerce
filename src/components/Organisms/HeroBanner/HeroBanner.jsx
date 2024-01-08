@@ -11,7 +11,7 @@ function HeroBanner(props) {
       <div className='hero-image-container'>
         <div className='banner-contents-wrapper'>
           <Heading primary={true} text={heroBannerData.heading} />
-          <TextParagraph text={heroBannerData.subHeading}></TextParagraph>
+          <TextParagraph text={heroBannerData.subHeading} subText={true}></TextParagraph>
           <Button text='shop now' />
           <ul className='stats-list'>
             {heroBannerData.stats.map((item, key) => {
