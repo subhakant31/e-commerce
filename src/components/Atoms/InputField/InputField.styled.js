@@ -18,5 +18,8 @@ export const StyledInputField = styled.div`
     width: 100%;
     background-color: transparent;
     padding: 12px;
+    &:placeholder {
+      font-family: "Satoshi";
+    }
   }
 `;

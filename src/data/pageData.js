@@ -7,6 +7,27 @@ export const headerData = {
     icon: logo,
     alt: "company logo",
   },
+  heroBanner: {
+    image: "./assets/hero-image.png",
+    imageAlt : 'man and a woman posing for image',
+    heading: "FIND CLOTHES THAT MATCHES YOUR STYLE",
+    subHeading:
+      "Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.",
+    stats: [
+      {
+        title: "international brands",
+        value: "200+",
+      },
+      {
+        title: "high-quality products",
+        value: "2,000+",
+      },
+      {
+        title: "happy customers",
+        value: "30,000+",
+      },
+    ],
+  },
   navItems: [
     {
       title: "shop",

@@ -15,6 +15,7 @@ function findSize(size) {
 }
 
 export const StyledButton = styled.div`
+  margin-top: 32px;
   button {
     background-color: ${(props) => (props.primary ? "#000" : "transparent")};
     color: ${(props) => (props.primary ? "#ffff" : "#000")};
