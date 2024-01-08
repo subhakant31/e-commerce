@@ -5,6 +5,8 @@ import RootLayout from "./components/RootLayout";
 import HeroBanner from "./components/Organisms/HeroBanner/HeroBanner";
 import Header from "./components/Organisms/Header/Header";
 import { GlobalStyles } from "./styles/globalStyles";
+import Footer from './components/Organisms/Footer/Footer';
+import "./App.css";
 function App() {
   const router = createBrowserRouter([
     {
@@ -25,8 +27,10 @@ function App() {
     <>
       <GlobalStyles />
       <Header></Header>
-      <HeroBanner></HeroBanner>
     </>
+    // <div>
+    //   <RouterProvider router={router} />
+    // </div>
   );
 }
 
