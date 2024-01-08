@@ -2,6 +2,7 @@ import { StyledHeroBanner } from "./HeroBanner.styled";
 import { headerData } from "../../../data/pageData";
 import { Heading } from "../../Atoms/Heading/Heading";
 import { Button } from "../../Atoms/Button/Button";
+import TextParagraph from "../../Atoms/TextParagraph/TextParagraph";
 function HeroBanner(props) {
   const heroBannerData = headerData.heroBanner;
   console.log(heroBannerData);
@@ -10,7 +11,7 @@ function HeroBanner(props) {
       <div className='hero-image-container'>
         <div className='banner-contents-wrapper'>
           <Heading primary={true} text={heroBannerData.heading} />
-          <p className='sub-heading'>{heroBannerData.subHeading}</p>
+          <TextParagraph text={heroBannerData.subHeading}></TextParagraph>
           <Button text='shop now' />
           <ul className='stats-list'>
             {heroBannerData.stats.map((item, key) => {
