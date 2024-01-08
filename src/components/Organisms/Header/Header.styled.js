@@ -1,10 +1,17 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
+  font-family: "satoshi";
+  box-sizing: border-box;
+  background-color: #ffff;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 24px 100px;
+  position: fixed;
+  top: 0;
+  z-index: 999;
   .navigation {
     .nav-list {
       display: flex;

@@ -2,7 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./components/RootLayout";
+import HeroBanner from "./components/Organisms/HeroBanner/HeroBanner";
 import Header from "./components/Organisms/Header/Header";
+import { GlobalStyles } from "./styles/globalStyles";
 import Footer from './components/Organisms/Footer/Footer';
 import "./App.css";
 function App() {
@@ -23,8 +25,8 @@ function App() {
 
   return (
     <>
+      <GlobalStyles />
       <Header></Header>
-      <Footer />
     </>
     // <div>
     //   <RouterProvider router={router} />
