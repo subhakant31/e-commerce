@@ -1,7 +1,7 @@
 import { StyledTextParagraph } from "./TextParagraph.styled";
-function TextParagraph({ text }) {
+function TextParagraph({ text, subText }) {
   return (
-    <StyledTextParagraph className='sub-heading'>
+    <StyledTextParagraph subText={subText}>
       <p className='sub-heading'>{text}</p>
     </StyledTextParagraph>
   );

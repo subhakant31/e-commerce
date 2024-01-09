@@ -29,15 +29,19 @@ export const FooterContainer = styled.footer`
     display:flex;
     flex-basis:70%;
     justify-content: space-around;
+    padding-bottom: 22px;
     ul li {
         padding-bottom: 1em; 
         a {
           color:rgba(0, 0, 0, 0.60);
         }
     }
+    h4 {
+      margin-bottom: 26px;
+    }
   }
   .footer-bottom {
-    padding-top: 0.5em;
+    padding-top: 1.5em;
     border-top: 1px solid rgba(0, 0, 0, 0.10);
     display: flex;
     justify-content: space-between;
