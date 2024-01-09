@@ -9,6 +9,8 @@ import Footer from "./components/Organisms/Footer/Footer";
 import "./App.css";
 import ProductsList from "./components/Pages/ProductsList/ProductsList";
 import { Card } from "./components/Molecules/Card/Card";
+import ProductsDetail from "./components/Pages/ProductDetail/ProductDetail";
+
 function App() {
   const router = createBrowserRouter([
     {
@@ -31,6 +33,7 @@ function App() {
       <Header></Header>
       {/* <HeroBanner></HeroBanner> */}
       <ProductsList></ProductsList>
+      <ProductsDetail />
       <Footer />
     </>
     // <div>
