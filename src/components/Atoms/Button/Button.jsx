@@ -19,5 +19,5 @@ Button.propTypes = {
 Button.defaultProps = {
   primary: true,
   size: "medium",
-  onChange: undefined,
+  onClick: undefined,
 };
