@@ -5,15 +5,19 @@ import data from "../../../data/productsData";
 import { Card } from "../../Molecules/Card/Card";
 import { ProductContext } from "../../../contexts/productContext";
 import Pagination from "../../Molecules/Pagination/Pagination";
+import Loader from "../../Atoms/Loader/Loader";
+
 function ProductsList(props) {
   const [productData, setProductData] = useContext(ProductContext);
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true); // New state for loading
   const productsPerPage = 9;
 
   useEffect(() => {
     const fetchData = () => {
       setTimeout(() => {
         setProductData(data);
+        setLoading(false); // Set loading to false after data is fetched
       }, 1000); // Adjust the delay as needed
     };
 
@@ -21,8 +25,8 @@ function ProductsList(props) {
   }, []);
 
   // Check if productData and productData.sneakers are defined
-  if (!productData || !productData.sneakers) {
-    return null; // or render loading indicator
+  if (loading || !productData || !productData.sneakers) {
+    return <Loader />; // Render loading indicator
   }
 
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -69,7 +73,8 @@ function ProductsList(props) {
   return (
     <StyledProductsList>
       <Heading primary={false} text={"shop"} centeredText></Heading>
-      {/* <div className=''> </div> */}
+
+      {/* Sorting dropdown */}
       <select
         className='sorting-buttons'
         onChange={(e) => {
@@ -81,25 +86,35 @@ function ProductsList(props) {
         <option value='latest'>latest</option>
       </select>
 
-      <ul className='item-list'>
-        {currentProducts.map((item, key) => (
-          <Card
-            image={item.original_picture_url}
-            altText={"image of product"}
-            title={item.name}
-            brandName={item.brand_name}
-            price={item.retail_price_cents}
-            productId={item.id}
-            key={item.id}
-          ></Card>
-        ))}
-      </ul>
-      <Pagination
-        productsPerPage={productsPerPage}
-        totalProducts={productData.sneakers.length}
-        paginate={paginate}
-        currentPage={currentPage}
-      />
+      {/* Conditional rendering based on loading state */}
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          {/* Product list */}
+          <ul className='item-list'>
+            {currentProducts.map((item, key) => (
+              <Card
+                image={item.original_picture_url}
+                altText={"image of product"}
+                title={item.name}
+                brandName={item.brand_name}
+                price={item.retail_price_cents}
+                productId={item.id}
+                key={item.id}
+              ></Card>
+            ))}
+          </ul>
+
+          {/* Pagination */}
+          <Pagination
+            productsPerPage={productsPerPage}
+            totalProducts={productData.sneakers.length}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
+        </>
+      )}
     </StyledProductsList>
   );
 }
