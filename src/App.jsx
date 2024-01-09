@@ -13,27 +13,39 @@ import { ProductContext } from "./contexts/productContext";
 import ProductsList from "./components/Pages/ProductsList/ProductsList";
 import { Card } from "./components/Molecules/Card/Card";
 import ProductsDetail from "./components/Pages/ProductDetail/ProductDetail";
+import { UserCartContext } from "./contexts/userCartContext";
 
 function App() {
   const [productData, setProductData] = useState([]);
+  const [userCart, setUserCart] = useState([]);
 
   return (
     <Router>
       <>
         <GlobalStyles />
-        <Header></Header>
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route
-            path='/products'
-            element={
-              <ProductContext.Provider value={[productData, setProductData]}>
-                <ProductsList></ProductsList>
-              </ProductContext.Provider>
-            }
-          />
-        </Routes>
-        <Footer />
+        <UserCartContext.Provider value={[userCart, setUserCart]}>
+          <Header></Header>
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route
+              path='/products'
+              element={
+                <ProductContext.Provider value={[productData, setProductData]}>
+                  <ProductsList></ProductsList>
+                </ProductContext.Provider>
+              }
+            />
+            <Route
+              path='/products/:id'
+              element={
+                <ProductContext.Provider value={[productData, setProductData]}>
+                  <ProductsDetail></ProductsDetail>
+                </ProductContext.Provider>
+              }
+            ></Route>
+          </Routes>
+          <Footer />
+        </UserCartContext.Provider>
       </>
     </Router>
   );
