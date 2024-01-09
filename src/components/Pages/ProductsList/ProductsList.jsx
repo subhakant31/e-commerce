@@ -1,32 +1,33 @@
 import { StyledProductsList } from "./ProductsList.styled";
 import { Heading } from "../../Atoms/Heading/Heading";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import data from "../../../data/productsData";
 import { Card } from "../../Molecules/Card/Card";
+import { ProductContext } from "../../../contexts/productContext";
 import Pagination from "../../Molecules/Pagination/Pagination";
 function ProductsList(props) {
-  const [sneakerData, setSneakerData] = useState([]);
+  const [productData, setProductData] = useContext(ProductContext);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 9;
 
   useEffect(() => {
     const fetchData = () => {
       setTimeout(() => {
-        setSneakerData(data);
+        setProductData(data);
       }, 1000); // Adjust the delay as needed
     };
 
     fetchData();
   }, []);
 
-  // Check if sneakerData and sneakerData.sneakers are defined
-  if (!sneakerData || !sneakerData.sneakers) {
+  // Check if productData and productData.sneakers are defined
+  if (!productData || !productData.sneakers) {
     return null; // or render loading indicator
   }
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = sneakerData.sneakers.slice(
+  const currentProducts = productData.sneakers.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
@@ -40,28 +41,28 @@ function ProductsList(props) {
 
     switch (value) {
       case "price-high-low":
-        sortedProducts = [...sneakerData.sneakers].sort(
+        sortedProducts = [...productData.sneakers].sort(
           (a, b) => b.retail_price_cents - a.retail_price_cents
         );
         break;
 
       case "price-low-high":
-        sortedProducts = [...sneakerData.sneakers].sort(
+        sortedProducts = [...productData.sneakers].sort(
           (a, b) => a.retail_price_cents - b.retail_price_cents
         );
         break;
 
       case "latest":
-        sortedProducts = [...sneakerData.sneakers].sort(
+        sortedProducts = [...productData.sneakers].sort(
           (a, b) => new Date(b.release_date) - new Date(a.release_date)
         );
         break;
 
       default:
-        sortedProducts = [...sneakerData.sneakers];
+        sortedProducts = [...productData.sneakers];
     }
 
-    setSneakerData({ sneakers: sortedProducts });
+    setProductData({ sneakers: sortedProducts });
     setCurrentPage(1); // Reset to the first page after sorting
   }
 
@@ -95,7 +96,7 @@ function ProductsList(props) {
       </ul>
       <Pagination
         productsPerPage={productsPerPage}
-        totalProducts={sneakerData.sneakers.length}
+        totalProducts={productData.sneakers.length}
         paginate={paginate}
         currentPage={currentPage}
       />

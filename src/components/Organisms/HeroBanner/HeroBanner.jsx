@@ -1,22 +1,31 @@
+import React from "react";
 import { StyledHeroBanner } from "./HeroBanner.styled";
 import { headerData } from "../../../data/pageData";
 import { Heading } from "../../Atoms/Heading/Heading";
 import { Button } from "../../Atoms/Button/Button";
 import TextParagraph from "../../Atoms/TextParagraph/TextParagraph";
+import { useNavigate } from "react-router-dom";
+
 function HeroBanner(props) {
   const heroBannerData = headerData.heroBanner;
-  console.log(heroBannerData);
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    // Navigate to the '/products' route on button click
+    navigate("/products");
+  };
+
   return (
     <StyledHeroBanner>
       <div className='hero-image-container'>
         <div className='banner-contents-wrapper'>
           <Heading primary={true} text={heroBannerData.heading} />
           <TextParagraph text={heroBannerData.subHeading}></TextParagraph>
-          <Button text='shop now' />
+          <Button text='shop now' onClick={handleButtonClick} />
           <ul className='stats-list'>
             {heroBannerData.stats.map((item, key) => {
               return (
-                <li>
+                <li key={key}>
                   <span className='stat-value'>{item.value}</span>
                   <span className='stat-title'>{item.title}</span>
                 </li>
