@@ -14,3 +14,21 @@ export function centsToDollars(cents) {
   const dollars = cents / 100;
   return dollars.toFixed(2); // Fixed to 2 decimal places
 }
+
+/* 
+  @function : formatDateFromUnixTimestamp
+  @description : converts unix value to proper date format
+  @returns : date 
+  @param : unix(integer)
+*/
+function formatDateFromUnixTimestamp(unixTimestamp) {
+  const milliseconds = unixTimestamp * 1000;
+  const date = new Date(milliseconds);
+  const options = {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  };
+  const formattedDate = date.toLocaleDateString("en-US", options);
+  return formattedDate;
+}
