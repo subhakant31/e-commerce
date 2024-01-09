@@ -1,4 +1,5 @@
 import { StyledCard } from "./Card.styled";
+import { Link } from "react-router-dom";
 import { centsToDollars } from "../../../helperFunctions";
 export const Card = ({
   image,
@@ -11,7 +12,11 @@ export const Card = ({
   return (
     <>
       <StyledCard>
-        <a href='/' className='product' data-id={productId}>
+        <Link
+          to={`/products/${productId}`}
+          className='product'
+          data-id={productId}
+        >
           <div className='image-container'>
             <img src={image} alt={altText} />
           </div>
@@ -19,7 +24,7 @@ export const Card = ({
           <span className='brand'> {brandName}</span>
 
           <span className='price'>${centsToDollars(price)}</span>
-        </a>
+        </Link>
       </StyledCard>
     </>
   );
