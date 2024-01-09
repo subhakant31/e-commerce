@@ -1,10 +1,32 @@
+import { useEffect, useState } from "react";
 import { headerData } from "../../../data/pageData";
 import { InputField } from "../../Atoms/InputField/InputField";
 import { StyledHeader } from "./Header.styled";
 import { Link } from "react-router-dom";
 function Header() {
+  const [isSticky, setSticky] = useState(false);
+
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    const scrollVal = window.scrollY;
+
+   
+    if(scrollVal > 100) {
+      setSticky(true);
+    } else {
+      setSticky(false);
+    }}
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <StyledHeader>
+    <StyledHeader className={`${isSticky ? 'sticky' : ''}`}>
       <div className='logo'>
         <Link to={"/"}>
           <img src={headerData.logo.icon} alt={headerData.logo.alt} />

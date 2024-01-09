@@ -9,8 +9,8 @@ export const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 24px 100px;
-  position: fixed;
-  top: 0;
+  // position: fixed;
+  // top: 0;
   z-index: 999;
   .navigation {
     .nav-list {
@@ -37,5 +37,9 @@ export const StyledHeader = styled.header`
         font-size: 24px;
       }
     }
+  }
+  &.sticky {
+    position: fixed;
+    top: 0;
   }
 `;

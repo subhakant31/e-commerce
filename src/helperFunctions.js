@@ -21,7 +21,7 @@ export function centsToDollars(cents) {
   @returns : date 
   @param : unix(integer)
 */
-function formatDateFromUnixTimestamp(unixTimestamp) {
+export function formatDateFromUnixTimestamp(unixTimestamp) {
   const milliseconds = unixTimestamp * 1000;
   const date = new Date(milliseconds);
   const options = {

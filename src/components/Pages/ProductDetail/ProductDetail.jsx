@@ -6,7 +6,7 @@ import ProductQuantity from "../../Atoms/ProductQuantity/ProductQuantity";
 import TextParagraph from "../../Atoms/TextParagraph/TextParagraph";
 import ProductSizeRanges from "../../Atoms/ProductSizeRanges/ProductSizeRanges";
 import ColorIcon from "../../Atoms/ColorIcon/ColorIcon";
-import { centsToDollars } from "../../../helperFunctions";
+import { centsToDollars, formatDateFromUnixTimestamp } from "../../../helperFunctions";
 import { useContext } from "react";
 import { ProductContext } from "../../../contexts/productContext";
 import { useParams } from "react-router-dom";
@@ -45,7 +45,7 @@ function ProductsDetail() {
           <p>${centsToDollars(product.retail_price_cents)}</p>
           <TextParagraph text={product.details} subText={true}></TextParagraph>
           <div className='product-color'>
-            Select Colors: <ColorIcon color={product.color} />
+          Available Colors: <ColorIcon color={product.color} />
           </div>
           <ProductSizeRanges sizes={sortedShoeSizes} />
           <div className='button-wrapper'>
@@ -53,8 +53,7 @@ function ProductsDetail() {
             <Button text='Add to Cart' />
           </div>
         </div>
-      </div>
-      <div className='product-details'>
+        <div className='product-details'>
         <table>
           <thead>
             <tr>
@@ -76,7 +75,7 @@ function ProductsDetail() {
             </tr>
             <tr>
               <td>Release Date:</td>
-              <td>{product.release_date}</td>
+              <td>{formatDateFromUnixTimestamp(product.release_date_unix)}</td>
             </tr>
             <tr>
               <td>Release Year:</td>
@@ -88,6 +87,7 @@ function ProductsDetail() {
             </tr>
           </tbody>
         </table>
+      </div>
       </div>
     </StyledProductsDetail>
   );

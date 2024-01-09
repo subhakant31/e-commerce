@@ -2,10 +2,12 @@ import styled from "styled-components";
 
 export const StyledProductsDetail = styled.div`
 .product-view-wrapper {
-    display: flex;
     justify-content: center;
     align-items: center;
     gap: 48px;
+    display: grid;
+    grid-template-columns: 40% 40%;
+    margin: 4% 0;
 }
 .button-wrapper {
     display: flex;
@@ -36,4 +38,24 @@ p {
 font-size: 32px;
 font-weight: 700;
 }
+table {
+    width: 100%;
+}
+th {
+    background-color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    padding-bottom: 14px;
+}
+tbody  {
+    tr {
+        background-color: #dddddd;
+    }
+    td {
+        border: 2px solid #fff;
+        padding: 8px 32px 8px 8px;
+    }
+}
+
+
 `;
