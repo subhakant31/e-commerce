@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./components/RootLayout";
 import HeroBanner from "./components/Organisms/HeroBanner/HeroBanner";
 import Header from "./components/Organisms/Header/Header";
@@ -16,8 +15,15 @@ import ProductsDetail from "./components/Pages/ProductDetail/ProductDetail";
 import { UserCartContext } from "./contexts/userCartContext";
 
 function App() {
-  const [productData, setProductData] = useState([]);
+  const [productData, setProductData] = useState(
+    JSON.parse(localStorage.getItem("productData")) || []
+  );
   const [userCart, setUserCart] = useState([]);
+
+  useEffect(() => {
+    // Save productData to local storage whenever it changes
+    localStorage.setItem("productData", JSON.stringify(productData));
+  }, [productData]);
 
   return (
     <Router>
