@@ -9,24 +9,23 @@ function Header() {
   const handleScroll = () => {
     const offset = window.scrollY;
     const scrollVal = window.scrollY;
-
-   
-    if(scrollVal > 100) {
+    if (scrollVal > 1) {
       setSticky(true);
     } else {
       setSticky(false);
-    }}
+    }
+  };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <StyledHeader className={`${isSticky ? 'sticky' : ''}`}>
+    <StyledHeader className={`${isSticky ? "sticky" : ""}`}>
       <div className='logo'>
         <Link to={"/"}>
           <img src={headerData.logo.icon} alt={headerData.logo.alt} />
