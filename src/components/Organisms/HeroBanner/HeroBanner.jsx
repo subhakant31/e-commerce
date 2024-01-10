@@ -24,7 +24,11 @@ function HeroBanner(props) {
             text={heroBannerData.subHeading}
             subText={true}
           ></TextParagraph>
-          <Button text='shop now' onClick={handleButtonClick} />
+          <Button
+            text='shop now'
+            className='shop-now-btn'
+            onClick={handleButtonClick}
+          />
           <ul className='stats-list'>
             {heroBannerData.stats.map((item, key) => {
               return (

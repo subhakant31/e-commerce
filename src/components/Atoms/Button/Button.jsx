@@ -1,9 +1,16 @@
 import PropTypes from "prop-types";
 import { StyledButton } from "./Button.styled";
 
-export const Button = ({ text, primary, size, onClick, ...props }) => {
+export const Button = ({
+  text,
+  primary,
+  size,
+  onClick,
+  className,
+  ...props
+}) => {
   return (
-    <StyledButton primary={primary} onClick={onClick}>
+    <StyledButton primary={primary} className={className} onClick={onClick}>
       <button> {text}</button>
     </StyledButton>
   );
