@@ -14,6 +14,7 @@ import ProductsList from "./components/Pages/ProductsList/ProductsList";
 import { Card } from "./components/Molecules/Card/Card";
 import ProductsDetail from "./components/Pages/ProductDetail/ProductDetail";
 import { UserCartContext } from "./contexts/userCartContext";
+import UserCart from "./components/Pages/UserCart/UserCart";
 
 function App() {
   const [productData, setProductData] = useState([]);
@@ -46,6 +47,7 @@ function App() {
           </Routes>
           <Footer />
         </UserCartContext.Provider>
+        <UserCart />
       </>
     </Router>
   );

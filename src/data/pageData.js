@@ -101,11 +101,11 @@ export const footerData = {
     copyright:
       "Shop.co © 2000-2023, All Rights Reserved",
     paymentCards: [
-      {src: './assests/paymentCards/Apple.png', alt: 'Apple Card'},
-      {src: './assests/paymentCards/Google.svg', alt: 'Google Card'},
-      {src: './assests/paymentCards/Master.svg', alt: 'Master Card'},
-      {src: './assests/paymentCards/Paypal.svg', alt: 'Paypal Card'},
-      {src: './assests/paymentCards/Visa.svg', alt: 'Visa Card'},
+      {src: './assets/paymentCards/Apple.png', alt: 'Apple Card'},
+      {src: './assets/paymentCards/Google.svg', alt: 'Google Card'},
+      {src: './assets/paymentCards/Master.svg', alt: 'Master Card'},
+      {src: './assets/paymentCards/Paypal.svg', alt: 'Paypal Card'},
+      {src: './assets/paymentCards/Visa.svg', alt: 'Visa Card'},
     ]
   },
 
