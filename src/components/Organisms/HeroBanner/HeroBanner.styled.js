@@ -54,5 +54,9 @@ export const StyledHeroBanner = styled.div`
     }
   }
 
+  .shop-now-btn {
+    margin-top: 32px;
+  }
+
 
 `;
