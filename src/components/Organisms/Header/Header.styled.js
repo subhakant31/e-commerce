@@ -39,7 +39,7 @@ export const StyledHeader = styled.header`
     }
   }
   &.sticky {
-    position: fixed;
+    position: sticky;
     top: 0;
   }
 `;

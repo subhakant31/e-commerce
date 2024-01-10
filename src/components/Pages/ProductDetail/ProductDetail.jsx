@@ -38,7 +38,6 @@ function ProductsDetail() {
 
   return (
     <StyledProductsDetail>
-      {console.log(product)}
       <div className='product-view-wrapper'>
         <div className='product-left-container'>
           <img src={product.original_picture_url} alt={"image of product"} />

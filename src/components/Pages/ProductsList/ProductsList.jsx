@@ -3,35 +3,44 @@ import { Heading } from "../../Atoms/Heading/Heading";
 import { useContext, useEffect, useState } from "react";
 import data from "../../../data/productsData";
 import { Card } from "../../Molecules/Card/Card";
-import { ProductContext } from "../../../contexts/productContext";
+import {
+  ProductContext,
+  SearchQueryContext,
+} from "../../../contexts/productContext";
 import Pagination from "../../Molecules/Pagination/Pagination";
 import Loader from "../../Atoms/Loader/Loader";
 import ProductControlPanel from "../../Organisms/ProductControlPanel/ProductControlPanel";
+import { useLocation } from "react-router-dom";
+
 function ProductsList(props) {
   const [productData, setProductData] = useContext(ProductContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(true); // New state for loading
+  const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const query = queryParams.get("query");
   const productsPerPage = 9;
 
   useEffect(() => {
     const fetchData = () => {
       setTimeout(() => {
         setProductData(data);
-        setLoading(false); // Set loading to false after data is fetched
-      }, 1000); // Adjust the delay as needed
+        setLoading(false);
+      }, 1000);
     };
 
     fetchData();
   }, []);
 
-  // Check if productData and productData.sneakers are defined
-  if (loading || !productData || !productData.sneakers) {
-    return <Loader />; // Render loading indicator
-  }
+  const filteredProducts = query
+    ? productData.sneakers.filter((item) =>
+        item.name.toLowerCase().includes(query.toLowerCase())
+      )
+    : productData.sneakers;
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = productData.sneakers.slice(
+  const currentProducts = filteredProducts.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
@@ -45,29 +54,29 @@ function ProductsList(props) {
 
     switch (value) {
       case "price-high-low":
-        sortedProducts = [...productData.sneakers].sort(
+        sortedProducts = [...filteredProducts].sort(
           (a, b) => b.retail_price_cents - a.retail_price_cents
         );
         break;
 
       case "price-low-high":
-        sortedProducts = [...productData.sneakers].sort(
+        sortedProducts = [...filteredProducts].sort(
           (a, b) => a.retail_price_cents - b.retail_price_cents
         );
         break;
 
       case "latest":
-        sortedProducts = [...productData.sneakers].sort(
+        sortedProducts = [...filteredProducts].sort(
           (a, b) => new Date(b.release_date) - new Date(a.release_date)
         );
         break;
 
       default:
-        sortedProducts = [...productData.sneakers];
+        sortedProducts = [...filteredProducts];
     }
 
     setProductData({ sneakers: sortedProducts });
-    setCurrentPage(1); // Reset to the first page after sorting
+    setCurrentPage(1);
   }
 
   return (
@@ -89,7 +98,7 @@ function ProductsList(props) {
         <ProductControlPanel></ProductControlPanel>
         {/* Conditional rendering based on loading state */}
         {loading ? (
-          <div>Loading...</div>
+          <Loader />
         ) : (
           <div className='items-pagination-container'>
             {/* Product list */}
@@ -110,7 +119,7 @@ function ProductsList(props) {
             {/* Pagination */}
             <Pagination
               productsPerPage={productsPerPage}
-              totalProducts={productData.sneakers.length}
+              totalProducts={filteredProducts.length}
               paginate={paginate}
               currentPage={currentPage}
             />

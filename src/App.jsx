@@ -14,12 +14,13 @@ import { Card } from "./components/Molecules/Card/Card";
 import ProductsDetail from "./components/Pages/ProductDetail/ProductDetail";
 import { UserCartContext } from "./contexts/userCartContext";
 import UserCart from "./components/Pages/UserCart/UserCart";
-
+import { SearchQueryContext } from "./contexts/productContext";
 function App() {
   const [productData, setProductData] = useState(
     JSON.parse(localStorage.getItem("productData")) || []
   );
   const [userCart, setUserCart] = useState([]);
+  const [searchQuery, setSearchQuery] = useState();
 
   useEffect(() => {
     // Save productData to local storage whenever it changes
@@ -31,27 +32,33 @@ function App() {
       <>
         <GlobalStyles />
         <UserCartContext.Provider value={[userCart, setUserCart]}>
-          <Header></Header>
-          <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route
-              path='/products'
-              element={
-                <ProductContext.Provider value={[productData, setProductData]}>
-                  <ProductsList></ProductsList>
-                </ProductContext.Provider>
-              }
-            />
-            <Route
-              path='/products/:id'
-              element={
-                <ProductContext.Provider value={[productData, setProductData]}>
-                  <ProductsDetail></ProductsDetail>
-                </ProductContext.Provider>
-              }
-            ></Route>
-          </Routes>
-          <Footer />
+          <SearchQueryContext.Provider value={[searchQuery, setSearchQuery]}>
+            <Header></Header>
+            <Routes>
+              <Route path='/' element={<HomePage />} />
+              <Route
+                path='/products'
+                element={
+                  <ProductContext.Provider
+                    value={[productData, setProductData]}
+                  >
+                    <ProductsList></ProductsList>
+                  </ProductContext.Provider>
+                }
+              />
+              <Route
+                path='/products/:id'
+                element={
+                  <ProductContext.Provider
+                    value={[productData, setProductData]}
+                  >
+                    <ProductsDetail></ProductsDetail>
+                  </ProductContext.Provider>
+                }
+              ></Route>
+            </Routes>
+            <Footer />
+          </SearchQueryContext.Provider>
         </UserCartContext.Provider>
         <UserCart />
       </>

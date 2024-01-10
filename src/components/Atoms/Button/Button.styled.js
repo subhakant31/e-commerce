@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 function findSize(size) {
-  console.log(size);
   switch (size) {
     case "small":
       return 68;
