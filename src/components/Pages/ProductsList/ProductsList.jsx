@@ -6,7 +6,7 @@ import { Card } from "../../Molecules/Card/Card";
 import { ProductContext } from "../../../contexts/productContext";
 import Pagination from "../../Molecules/Pagination/Pagination";
 import Loader from "../../Atoms/Loader/Loader";
-
+import ProductControlPanel from "../../Organisms/ProductControlPanel/ProductControlPanel";
 function ProductsList(props) {
   const [productData, setProductData] = useContext(ProductContext);
   const [currentPage, setCurrentPage] = useState(1);
@@ -72,7 +72,7 @@ function ProductsList(props) {
 
   return (
     <StyledProductsList>
-      <Heading primary={false} text={"shop"} centeredText></Heading>
+      <Heading size='medium' text={"Shop"} centeredText></Heading>
 
       {/* Sorting dropdown */}
       <select
@@ -85,36 +85,38 @@ function ProductsList(props) {
         <option value='price-low-high'>price(low-high)</option>
         <option value='latest'>latest</option>
       </select>
+      <div className='product-list-filter-container'>
+        <ProductControlPanel></ProductControlPanel>
+        {/* Conditional rendering based on loading state */}
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <div className='items-pagination-container'>
+            {/* Product list */}
+            <ul className='item-list'>
+              {currentProducts.map((item, key) => (
+                <Card
+                  image={item.original_picture_url}
+                  altText={"image of product"}
+                  title={item.name}
+                  brandName={item.brand_name}
+                  price={item.retail_price_cents}
+                  productId={item.id}
+                  key={item.id}
+                ></Card>
+              ))}
+            </ul>
 
-      {/* Conditional rendering based on loading state */}
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <>
-          {/* Product list */}
-          <ul className='item-list'>
-            {currentProducts.map((item, key) => (
-              <Card
-                image={item.original_picture_url}
-                altText={"image of product"}
-                title={item.name}
-                brandName={item.brand_name}
-                price={item.retail_price_cents}
-                productId={item.id}
-                key={item.id}
-              ></Card>
-            ))}
-          </ul>
-
-          {/* Pagination */}
-          <Pagination
-            productsPerPage={productsPerPage}
-            totalProducts={productData.sneakers.length}
-            paginate={paginate}
-            currentPage={currentPage}
-          />
-        </>
-      )}
+            {/* Pagination */}
+            <Pagination
+              productsPerPage={productsPerPage}
+              totalProducts={productData.sneakers.length}
+              paginate={paginate}
+              currentPage={currentPage}
+            />
+          </div>
+        )}
+      </div>
     </StyledProductsList>
   );
 }

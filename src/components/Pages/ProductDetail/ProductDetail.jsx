@@ -6,7 +6,10 @@ import ProductQuantity from "../../Atoms/ProductQuantity/ProductQuantity";
 import TextParagraph from "../../Atoms/TextParagraph/TextParagraph";
 import ProductSizeRanges from "../../Atoms/ProductSizeRanges/ProductSizeRanges";
 import ColorIcon from "../../Atoms/ColorIcon/ColorIcon";
-import { centsToDollars, formatDateFromUnixTimestamp } from "../../../helperFunctions";
+import {
+  centsToDollars,
+  formatDateFromUnixTimestamp,
+} from "../../../helperFunctions";
 import { useContext } from "react";
 import { ProductContext } from "../../../contexts/productContext";
 import { useParams } from "react-router-dom";
@@ -41,11 +44,11 @@ function ProductsDetail() {
           <img src={product.original_picture_url} alt={"image of product"} />
         </div>
         <div className='product-right-container'>
-          <Heading primary='medium' text={product.name}></Heading>
+          <Heading size='medium' text={product.name}></Heading>
           <p>${centsToDollars(product.retail_price_cents)}</p>
           <TextParagraph text={product.details} subText={true}></TextParagraph>
           <div className='product-color'>
-          Available Colors: <ColorIcon color={product.color} />
+            Available Colors: <ColorIcon color={product.color} />
           </div>
           <ProductSizeRanges sizes={sortedShoeSizes} />
           <div className='button-wrapper'>
@@ -54,40 +57,42 @@ function ProductsDetail() {
           </div>
         </div>
         <div className='product-details'>
-        <table>
-          <thead>
-            <tr>
-              <th>Product Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Brand Name:</td>
-              <td>{product.brand_name}</td>
-            </tr>
-            <tr>
-              <td>Gender:</td>
-              <td>{product.gender}</td>
-            </tr>
-            <tr>
-              <td>Designer:</td>
-              <td>{product.designer}</td>
-            </tr>
-            <tr>
-              <td>Release Date:</td>
-              <td>{formatDateFromUnixTimestamp(product.release_date_unix)}</td>
-            </tr>
-            <tr>
-              <td>Release Year:</td>
-              <td>{product.release_year}</td>
-            </tr>
-            <tr>
-              <td>Box Condition:</td>
-              <td>{product.box_condition}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Product Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Brand Name:</td>
+                <td>{product.brand_name}</td>
+              </tr>
+              <tr>
+                <td>Gender:</td>
+                <td>{product.gender}</td>
+              </tr>
+              <tr>
+                <td>Designer:</td>
+                <td>{product.designer}</td>
+              </tr>
+              <tr>
+                <td>Release Date:</td>
+                <td>
+                  {formatDateFromUnixTimestamp(product.release_date_unix)}
+                </td>
+              </tr>
+              <tr>
+                <td>Release Year:</td>
+                <td>{product.release_year}</td>
+              </tr>
+              <tr>
+                <td>Box Condition:</td>
+                <td>{product.box_condition}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </StyledProductsDetail>
   );
