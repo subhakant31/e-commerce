@@ -19,7 +19,7 @@ function HeroBanner(props) {
     <StyledHeroBanner>
       <div className='hero-image-container'>
         <div className='banner-contents-wrapper'>
-          <Heading size={"medium"} text={heroBannerData.heading} />
+          <Heading size={"large"} text={heroBannerData.heading} />
           <TextParagraph
             text={heroBannerData.subHeading}
             subText={true}
