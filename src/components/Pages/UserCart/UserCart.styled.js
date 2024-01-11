@@ -65,4 +65,9 @@ svg {
     justify-content: center;
     grid-template-columns: 50% 40%;
 }
+.heading {
+    padding-bottom: 26px;
+    padding-left: 100px;
+    text-align:left;
+}
 `;

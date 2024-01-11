@@ -14,44 +14,48 @@ import { ProductContext } from "../../../contexts/productContext";
 import OrderSummaryCard from '../../Atoms/OrderSummaryCard/OrderSummaryCard';
 
 const UserCart = () => {
-  const [userCart, setUserCart] = useContext(UserCartContext);
+    const [userCart, setUserCart] = useContext(UserCartContext);
 
-  return (
-    <StyledUserCart>
-      <Heading size='medium' text={"Your cart"} centeredText={true} />
-      {userCart.map((product, key) => {
-        return (
-          <div className='cart-wrapper--main'>
-            <div className='cart-details'>
-              <div className='cart-wrapper'>
-                <img
-                  src={product.item.grid_picture_url}
-                  alt={"image of product"}
-                />
-                <div>
-                  <TextParagraph
-                    text={product.item.name}
-                    subText={true}
-                  ></TextParagraph>
-                  <div className='product-size'>
-                    Size: {product.selectedSize}
-                  </div>
-                  <div className='product-color'>
-                    Color: <ColorIcon color={product.item.color} />
-                  </div>
-                  <p>${centsToDollars(product.item.retail_price_cents)}</p>
+    return (
+        <StyledUserCart>
+            <Heading size='medium' text={"Your cart"} centeredText={true} />
+            <div className='order-summary-card'>
+                <div className='cart-wrapper--main'>
+                    {userCart.map((product, key) => {
+                        return (
+                            <div className='cart-details'>
+                                <div className='cart-wrapper'>
+                                    <img
+                                        src={product.item.grid_picture_url}
+                                        alt={"image of product"}
+                                    />
+                                    <div className='details'>
+                                        <TextParagraph
+                                            text={product.item.name}
+                                            subText={true}
+                                        ></TextParagraph>
+                                        <div className='product-size'>
+                                            Size: {product.selectedSize}
+                                        </div>
+                                        <div className='product-color'>
+                                            Color: <ColorIcon color={product.item.color} />
+                                        </div>
+                                        <p>${centsToDollars(product.item.retail_price_cents)}</p>
+                                    </div>
+                                </div>
+                                <div className='button-wrapper'>
+                                    <RiDeleteBin6Line />
+                                    <ProductQuantity quantity={product.quantity} />
+                                </div>
+                            </div>
+
+                        );
+                    })}
                 </div>
-              </div>
-              <div className='button-wrapper'>
-                <RiDeleteBin6Line />
-                <ProductQuantity quantity={product.quantity} />
-              </div>
+                <OrderSummaryCard />
             </div>
-          </div>
-        );
-      })}
-    </StyledUserCart>
-  );
+        </StyledUserCart>
+    );
 };
 
 export default UserCart;

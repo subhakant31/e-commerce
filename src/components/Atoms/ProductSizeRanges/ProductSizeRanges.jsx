@@ -11,7 +11,7 @@ function ProductSizeRanges({ sizes, selectedSize, setSelectedSize }) {
     <StyledProductSizeRanges>
       <label htmlFor='shoeSize'>Choose Size:</label>
       <select value={selectedSize} onChange={handleSizeChange}>
-        <option value='' disabled>
+        <option value='' >
           Select a size
         </option>
         {sizes.map((size, index) => (
