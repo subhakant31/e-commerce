@@ -9,7 +9,7 @@ export const headerData = {
   },
   heroBanner: {
     image: "./assets/hero-image.png",
-    imageAlt : 'man and a woman posing for image',
+    imageAlt: "man and a woman posing for image",
     heading: "FIND CLOTHES THAT MATCHES YOUR STYLE",
     subHeading:
       "Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.",
@@ -50,13 +50,16 @@ export const headerData = {
     placeHolder: "search for products",
     icon: "FaSearch",
   },
-  icons: [<BiCart />, <VscAccount />],
+  icons: [
+    { icon: <BiCart />, href: "/usercart" },
+    { icon: <VscAccount />, href: "/" },
+  ],
 };
 
 export const footerData = {
   logo: {
     src: logo,
-    alt: 'Company Logo',
+    alt: "Company Logo",
     width: 100,
   },
   about: {
@@ -90,7 +93,7 @@ export const footerData = {
         { text: " Orders", url: "/" },
         { text: "Payments", url: "/" },
       ],
-    }
+    },
   ],
   icons: [
     { icon: <FaFacebook />, url: "/" },
@@ -98,16 +101,13 @@ export const footerData = {
     { icon: <FaInstagram />, url: "/" },
   ],
   bottom: {
-    copyright:
-      "Shop.co © 2000-2023, All Rights Reserved",
+    copyright: "Shop.co © 2000-2023, All Rights Reserved",
     paymentCards: [
-      {src: './assets/paymentCards/Apple.png', alt: 'Apple Card'},
-      {src: './assets/paymentCards/Google.svg', alt: 'Google Card'},
-      {src: './assets/paymentCards/Master.svg', alt: 'Master Card'},
-      {src: './assets/paymentCards/Paypal.svg', alt: 'Paypal Card'},
-      {src: './assets/paymentCards/Visa.svg', alt: 'Visa Card'},
-    ]
+      { src: "./assets/paymentCards/Apple.png", alt: "Apple Card" },
+      { src: "./assets/paymentCards/Google.svg", alt: "Google Card" },
+      { src: "./assets/paymentCards/Master.svg", alt: "Master Card" },
+      { src: "./assets/paymentCards/Paypal.svg", alt: "Paypal Card" },
+      { src: "./assets/paymentCards/Visa.svg", alt: "Visa Card" },
+    ],
   },
-
 };
-

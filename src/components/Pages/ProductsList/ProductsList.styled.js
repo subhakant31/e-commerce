@@ -10,4 +10,8 @@ export const StyledProductsList = styled.div`
   .product-list-filter-container {
     display: flex;
   }
+  .sorting-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
 `;

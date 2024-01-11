@@ -19,6 +19,43 @@ function ProductControlPanel(props) {
   const availableColors = findAllAvailableColors(productData.sneakers);
   const availableBrands = findAllAvailableBrands(productData.sneakers);
 
+  const handleBrandFilter = (event) => {
+    const brand = event.target.value;
+    const isChecked = event.target.checked;
+    console.log(brand, isChecked);
+
+    // Update the productData based on brand filter
+    const updatedProducts = productData.sneakers.map((product) => {
+      if (isChecked && product.brand_name === brand) {
+        return { ...product, visible: true };
+      } else if (!isChecked && product.brand_name === brand) {
+        return { ...product, visible: false };
+      } else {
+        return product;
+      }
+    });
+
+    setProductData({ sneakers: updatedProducts });
+  };
+
+  const handleColorFilter = (event) => {
+    const color = event.target.value;
+    const isChecked = event.target.checked;
+
+    // Update the productData based on color filter
+    const updatedProducts = productData.sneakers.map((product) => {
+      if (isChecked && product.colorway === color) {
+        return { ...product, visible: true };
+      } else if (!isChecked && product.colorway === color) {
+        return { ...product, visible: false };
+      } else {
+        return product;
+      }
+    });
+
+    setProductData({ sneakers: updatedProducts });
+  };
+
   return (
     <StyledControlPanel>
       <div className='heading'>
@@ -28,7 +65,11 @@ function ProductControlPanel(props) {
       <Accordion title='brands'>
         {availableBrands.map((item, key) => (
           <label key={key}>
-            <input type='checkbox' value={`${item}`} />
+            <input
+              type='checkbox'
+              value={`${item}`}
+              onChange={handleBrandFilter}
+            />
             {item}
           </label>
         ))}
@@ -38,7 +79,11 @@ function ProductControlPanel(props) {
           {availableColors.map((item, key) => (
             <li key={key}>
               <label>
-                <input type='checkbox' value={`${item}`} />
+                <input
+                  type='checkbox'
+                  value={`${item}`}
+                  onChange={handleColorFilter}
+                />
                 <ColorIcon color={item}></ColorIcon>
                 {item}
               </label>

@@ -33,6 +33,7 @@ export const StyledHeader = styled.header`
     display: flex;
     .icon {
       margin-left: 14px;
+      color: #000;
       svg {
         font-size: 24px;
       }

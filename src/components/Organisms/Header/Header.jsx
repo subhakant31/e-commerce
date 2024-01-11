@@ -4,9 +4,13 @@ import { InputField } from "../../Atoms/InputField/InputField";
 import { StyledHeader } from "./Header.styled";
 import { Link, useNavigate } from "react-router-dom";
 import { SearchQueryContext } from "../../../contexts/productContext";
+import { BiCart } from "react-icons/bi";
+import { VscAccount } from "react-icons/vsc";
+import { UserCartContext } from "../../../contexts/userCartContext";
 function Header() {
   const [isSticky, setSticky] = useState(false);
   const [searchQuery, setSearchQuery] = useContext(SearchQueryContext);
+  const [userCart, setUserCart] = useContext(UserCartContext);
   const navigate = useNavigate();
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -58,9 +62,13 @@ function Header() {
         onKeyDown={handleSubmit}
       ></InputField>
       <div className='icon-button-container'>
-        {headerData.icons.map((item, key) => {
-          return <div className='icon'>{item}</div>;
-        })}
+        <Link to={"/usercart"} className='icon'>
+          <BiCart />
+          <div className='count-indicator'>{userCart.length}</div>
+        </Link>
+        <Link to={"/"} className='icon'>
+          <VscAccount />
+        </Link>
       </div>
     </StyledHeader>
   );

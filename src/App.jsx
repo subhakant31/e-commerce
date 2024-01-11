@@ -19,13 +19,21 @@ function App() {
   const [productData, setProductData] = useState(
     JSON.parse(localStorage.getItem("productData")) || []
   );
-  const [userCart, setUserCart] = useState([]);
+  const [userCart, setUserCart] = useState(
+    JSON.parse(localStorage.getItem("userCart")) || []
+  );
+  const [filteredData, setFilteredData] = useState([]);
   const [searchQuery, setSearchQuery] = useState();
 
   useEffect(() => {
     // Save productData to local storage whenever it changes
     localStorage.setItem("productData", JSON.stringify(productData));
   }, [productData]);
+
+  useEffect(() => {
+    // Save userCart to local storage whenever it changes
+    localStorage.setItem("userCart", JSON.stringify(userCart));
+  }, [userCart]);
 
   return (
     <Router>
@@ -56,11 +64,11 @@ function App() {
                   </ProductContext.Provider>
                 }
               ></Route>
+              <Route path='/usercart' element={<UserCart />}></Route>
             </Routes>
             <Footer />
           </SearchQueryContext.Provider>
         </UserCartContext.Provider>
-        <UserCart />
       </>
     </Router>
   );

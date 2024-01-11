@@ -22,24 +22,24 @@ function ProductsList(props) {
   const productsPerPage = 9;
 
   useEffect(() => {
-    const fetchData = () => {
-      setTimeout(() => {
-        setProductData(data);
-        setLoading(false);
-      }, 1000);
-    };
+    // Assuming data fetching is asynchronous, set the data and loading state in useEffect
+    setProductData(data);
+    setLoading(false);
+  }, []); // Run once on component mount
 
-    fetchData();
-  }, []);
+  if (loading) {
+    return <Loader />; // Return a loader while data is being fetched
+  }
 
   const filteredProducts = query
-    ? productData.sneakers.filter((item) =>
+    ? productData?.sneakers?.filter((item) =>
         item.name.toLowerCase().includes(query.toLowerCase())
       )
-    : productData.sneakers;
+    : productData?.sneakers || []; // Default to an empty array if productData or sneakers is undefined
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+
   const currentProducts = filteredProducts.slice(
     indexOfFirstProduct,
     indexOfLastProduct
@@ -84,16 +84,7 @@ function ProductsList(props) {
       <Heading size='medium' text={"Shop"} centeredText></Heading>
 
       {/* Sorting dropdown */}
-      <select
-        className='sorting-buttons'
-        onChange={(e) => {
-          sortData(e.target.value);
-        }}
-      >
-        <option value='price-high-low'>price(high-low)</option>
-        <option value='price-low-high'>price(low-high)</option>
-        <option value='latest'>latest</option>
-      </select>
+
       <div className='product-list-filter-container'>
         <ProductControlPanel></ProductControlPanel>
         {/* Conditional rendering based on loading state */}
@@ -102,6 +93,18 @@ function ProductsList(props) {
         ) : (
           <div className='items-pagination-container'>
             {/* Product list */}
+            <div className='sorting-btn-wrapper'>
+              <select
+                className='sorting-buttons'
+                onChange={(e) => {
+                  sortData(e.target.value);
+                }}
+              >
+                <option value='price-high-low'>price(high-low)</option>
+                <option value='price-low-high'>price(low-high)</option>
+                <option value='latest'>latest</option>
+              </select>
+            </div>
             <ul className='item-list'>
               {currentProducts.map((item, key) => (
                 <Card
