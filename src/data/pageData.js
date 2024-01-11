@@ -2,6 +2,12 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import logo from "../assets/icons/logo.svg";
 import { BiCart } from "react-icons/bi";
 import { VscAccount } from "react-icons/vsc";
+
+import Applecard from "../assets/paymentCards/Apple.png"
+import Googlecard from "../assets/paymentCards/Google.svg"
+import Mastercard from "../assets/paymentCards/Master.svg"
+import Paypalcard from "../assets/paymentCards/Paypal.svg"
+import Visacard from "../assets/paymentCards/Visa.svg"
 export const headerData = {
   logo: {
     icon: logo,
@@ -103,11 +109,11 @@ export const footerData = {
   bottom: {
     copyright: "Shop.co © 2000-2023, All Rights Reserved",
     paymentCards: [
-      { src: "./assets/paymentCards/Apple.png", alt: "Apple Card" },
-      { src: "./assets/paymentCards/Google.svg", alt: "Google Card" },
-      { src: "./assets/paymentCards/Master.svg", alt: "Master Card" },
-      { src: "./assets/paymentCards/Paypal.svg", alt: "Paypal Card" },
-      { src: "./assets/paymentCards/Visa.svg", alt: "Visa Card" },
-    ],
+      {src: Applecard, alt: 'Apple Card'},
+      {src: Googlecard, alt: 'Google Card'},
+      {src: Mastercard, alt: 'Master Card'},
+      {src: Paypalcard, alt: 'Paypal Card'},
+      {src: Visacard, alt: 'Visa Card'},
+    ]
   },
 };

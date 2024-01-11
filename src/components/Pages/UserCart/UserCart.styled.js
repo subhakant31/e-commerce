@@ -10,6 +10,7 @@ export const StyledUserCart = styled.div`
     border: 1px solid rgba(0, 0, 0, 0.10);
     flex-direction: column;
     row-gap: 16px;
+    height:fit-content;
 }
 .cart-details {
     display: flex; 
@@ -30,6 +31,12 @@ export const StyledUserCart = styled.div`
 .cart-wrapper {
     display: flex;
     gap: 24px;
+    .details {
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
 .product-color {
     display: flex;
@@ -53,4 +60,9 @@ svg {
     width: 24px;
     height: 24px;
     }
+.order-summary-card {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 50% 40%;
+}
 `;

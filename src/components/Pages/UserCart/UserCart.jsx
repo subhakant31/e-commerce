@@ -11,6 +11,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { useContext } from "react";
 import { UserCartContext } from "../../../contexts/userCartContext";
 import { ProductContext } from "../../../contexts/productContext";
+import OrderSummaryCard from '../../Atoms/OrderSummaryCard/OrderSummaryCard';
 
 const UserCart = () => {
   const [userCart, setUserCart] = useContext(UserCartContext);
