@@ -66,9 +66,24 @@ svg {
     grid-template-columns: 50% 35%;
     gap: 50px;
 }
-.heading {
+.hkzDSY .heading {
     padding-bottom: 26px;
     padding-left: 100px;
     text-align:left;
 }
+.increment-button {
+    display: flex;
+    align-items: center;
+    button  {
+        display:none;
+    }
+ .gPpgCx {
+    padding: 0 0 0 4px;
+    background: none; 
+    gap: 0; 
+    
+ }
+}
+
+
 `;

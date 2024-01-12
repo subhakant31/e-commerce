@@ -46,14 +46,20 @@ const UserCart = () => {
                       Color: <ColorIcon color={product.item.color} />
                     </div>
                     <p>${centsToDollars(product.item.retail_price_cents)}</p>
+                    <div className="increment-button">
+                      <p>Total Item Selected:</p>
+                      <ProductQuantity quantity={product.quantity} />
+                    </div>
                   </div>
+
                 </Link>
                 <div className='button-wrapper'>
                   <RiDeleteBin6Line
                     data-id={product.item.id}
                     onClick={deleteItemFromCart}
                   />
-                  <ProductQuantity quantity={product.quantity} />
+
+
                 </div>
               </div>
             );

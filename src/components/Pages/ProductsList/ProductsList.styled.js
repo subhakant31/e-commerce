@@ -6,6 +6,7 @@ export const StyledProductsList = styled.div`
     place-items: center;
     gap: 15px;
     grid-template-columns: repeat(3, 1fr);
+    row-gap: 2em;
   }
   .product-list-filter-container {
     display: grid;
@@ -14,5 +15,11 @@ export const StyledProductsList = styled.div`
   .sorting-btn-wrapper {
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 3em;
+  }
+  .sorting-buttons {
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 16px;
   }
 `;

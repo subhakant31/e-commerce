@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 export const StyledCard = styled.div`
+max-width: 300px;
   .product {
     text-decoration: none;
     background-color: #f0f0f0;
 
     .image-container {
       max-width: 300px;
+      border-radius: 20px;
+      background: #F0EEED;
+      margin-bottom: 14px;
       img {
         width: 100%;
         object-fit: cover;

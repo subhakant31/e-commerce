@@ -12,7 +12,7 @@ export const StyledControlPanel = styled.div`
     letter-spacing: 0em;
     text-align: left;
     border: 1px solid rgb(0, 0, 0, 0.2);
-
+    align-items: center;
     h3 {
       margin-right: 166px;
     }
@@ -34,6 +34,13 @@ export const StyledControlPanel = styled.div`
     padding: 20px 24px;
     display: flex;
     flex-direction: column;
+    row-gap: 16px;
+    label {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      font-size: 18px;
+    }
   }
 
   .color-list {

@@ -14,6 +14,9 @@ export const StyledPagination = styled.nav`
         cursor: pointer;
         border-radius: 50%;
         border: 1px solid black;
+        padding: 0;
+        height: 28px;
+        width: 28px;
       }
     }
     .active {

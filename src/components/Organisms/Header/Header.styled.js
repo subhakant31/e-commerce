@@ -44,10 +44,13 @@ export const StyledHeader = styled.header`
         position: absolute;
         top: -22px;
         right: -4px;
-        padding: 3px 6px;
         border-radius: 50%;
         background-color: black;
         color: white;
+        display: grid;
+        place-content: center;
+        height: 20px;
+        width: 20px;
       }
    
     }

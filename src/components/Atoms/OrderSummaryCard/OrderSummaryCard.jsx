@@ -40,9 +40,9 @@ const OrderSummaryCard = () => {
       <div className='order-button-section'>
         <div className='order-button'>
           <InputField />
-          <Button text='Apply' className='' />
+          <Button text='Apply' />
         </div>
-        <Button text='Go to Checkout' className='' />
+        <Button text='Go to Checkout' className='checkout-button' />
       </div>
     </StyledOrderSummary>
   );

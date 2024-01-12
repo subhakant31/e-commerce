@@ -13,7 +13,7 @@ export const StyledOrderSummary = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
-    .jgeGew {
+    .checkout-button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,9 +25,6 @@ export const StyledOrderSummary = styled.div`
     align-items: center;
     gap: 32px;
 
-    .gyMvTt {
-        height: 32px;
-    }
 }
 .order-details {
     display: flex;
