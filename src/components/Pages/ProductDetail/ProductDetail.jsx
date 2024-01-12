@@ -17,7 +17,7 @@ import { useParams } from "react-router-dom";
 import { UserCartContext } from "../../../contexts/userCartContext";
 
 function ProductsDetail() {
-  const [productData, setProductData] = useContext(ProductContext);
+  let [productData, setProductData] = useContext(ProductContext);
   const [userCart, setUserCart] = useContext(UserCartContext);
   const [selectedSize, setSelectedSize] = useState();
   const [quantity, setQuantity] = useState(1);
@@ -25,40 +25,28 @@ function ProductsDetail() {
   const { id } = useParams();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const storedData = localStorage.getItem("productData");
+    const storedData = localStorage.getItem("productData");
 
-        if (storedData) {
-          // If data is in local storage, use it
-          setProductData(JSON.parse(storedData));
-          setLoading(false);
-        } else {
-          // If data is not in local storage, fetch it
-          // Simulate asynchronous data fetching
-          const response = await fetch("your-api-endpoint-here");
-          const data = await response.json();
+    if (storedData) {
+      // If data is in local storage, use it
+      setProductData(JSON.parse(storedData));
+      setLoading(false);
+    } else {
+      // If data is not in local storage, use the local JavaScript object
+      setProductData(data);
+      setLoading(false);
 
-          setProductData(data);
-          // Save data to local storage
-          localStorage.setItem("productData", JSON.stringify(data));
-          setLoading(false);
-        }
-      } catch (error) {
-        console.error("Error fetching or setting data:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [id, setProductData]);
+      // Save data to local storage
+      // localStorage.setItem("productData", JSON.stringify(data));
+    }
+  }, []);
 
   function findProductById(id) {
+    productData = data;
     // Check if productData and productData.sneakers are defined
     if (!productData || !productData.sneakers) {
       return null;
     }
-
     const product = productData.sneakers.find(
       (product) => product.id === parseInt(id)
     );
@@ -108,7 +96,10 @@ function ProductsDetail() {
   return (
     <StyledProductsDetail>
       {loading ? (
-        <Loader></Loader>
+        <>
+          {console.log(productData)}
+          <Loader></Loader>
+        </>
       ) : (
         <div className='product-view-wrapper'>
           <div className='product-left-container'>
