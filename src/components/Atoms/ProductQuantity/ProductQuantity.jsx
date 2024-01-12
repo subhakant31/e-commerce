@@ -11,16 +11,16 @@ const ProductQuantity = ({ quantity, setQuantity }) => {
   };
 
   const decrement = () => {
-    if (quantity > 0) {
+    if (quantity > 1) {
       setQuantity(quantity - 1);
     }
   };
 
   return (
     <StyledProductQuantity>
-      <FiMinus onClick={decrement} />
+      <button disabled={quantity===1}><FiMinus onClick={decrement}/></button>
       {quantity}
-      <GoPlus onClick={increment} />
+      <button disabled={quantity===5}><GoPlus onClick={increment} /></button>
     </StyledProductQuantity>
   );
 };

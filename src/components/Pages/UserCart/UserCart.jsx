@@ -1,6 +1,7 @@
 import { Heading } from "../../Atoms/Heading/Heading";
 import { StyledUserCart } from "./UserCart.styled";
 import data from "../../../data/productsData";
+import { Link } from "react-router-dom";
 import { Button } from "../../Atoms/Button/Button";
 import ProductQuantity from "../../Atoms/ProductQuantity/ProductQuantity";
 import TextParagraph from "../../Atoms/TextParagraph/TextParagraph";
@@ -31,7 +32,7 @@ const UserCart = () => {
           {userCart.map((product, key) => {
             return (
               <div className='cart-details'>
-                <div className='cart-wrapper'>
+                <Link to={`/products/${product.item.id}`} className='cart-wrapper'>
                   <img
                     src={product.item.grid_picture_url}
                     alt={"image of product"}
@@ -46,7 +47,7 @@ const UserCart = () => {
                     </div>
                     <p>${centsToDollars(product.item.retail_price_cents)}</p>
                   </div>
-                </div>
+                </Link>
                 <div className='button-wrapper'>
                   <RiDeleteBin6Line
                     data-id={product.item.id}

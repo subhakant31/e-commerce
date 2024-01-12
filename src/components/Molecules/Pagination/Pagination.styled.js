@@ -12,10 +12,12 @@ export const StyledPagination = styled.nav`
         background-color: transparent;
         border: none;
         cursor: pointer;
+        border-radius: 50%;
+        border: 1px solid black;
       }
     }
     .active {
-      border-bottom: 2px solid #000;
+      background-color: lightgray;
     }
   }
 `;

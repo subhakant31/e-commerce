@@ -117,3 +117,20 @@ export const footerData = {
     ]
   },
 };
+
+
+export const colorHashes = {
+  red: '#FF0000',
+  black : '#000',
+  green: '#00FF00',
+  blue: '#0000FF',
+  yellow: '#FFFF00',
+  purple: '#800080',
+  cyan: '#00FFFF',
+  orange: '#FFA500',
+  pink: '#FFC0CB',
+  brown: '#A52A2A',
+  gray: '#808080',
+  cream: '#FFFDD0'
+  // Add more colors as needed
+};

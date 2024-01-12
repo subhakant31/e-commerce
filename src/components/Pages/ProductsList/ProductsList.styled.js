@@ -8,7 +8,8 @@ export const StyledProductsList = styled.div`
     grid-template-columns: repeat(3, 1fr);
   }
   .product-list-filter-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 20% 70%;
   }
   .sorting-btn-wrapper {
     display: flex;

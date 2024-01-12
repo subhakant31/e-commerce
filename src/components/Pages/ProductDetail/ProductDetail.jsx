@@ -20,6 +20,7 @@ function ProductsDetail() {
   let [productData, setProductData] = useContext(ProductContext);
   const [userCart, setUserCart] = useContext(UserCartContext);
   const [selectedSize, setSelectedSize] = useState();
+  const [errorTextVisible, setErrorTextVisible] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
@@ -63,8 +64,12 @@ function ProductsDetail() {
   function addItemToCart() {
     // Check if selectedSize is defined
     if (!selectedSize) {
+      setErrorTextVisible(true);
       console.error("Please select a size before adding to the cart");
       return;
+    }
+    else {
+      setErrorTextVisible(false);
     }
 
     // Check if the item is already in the cart
@@ -117,9 +122,11 @@ function ProductsDetail() {
             </div>
             <ProductSizeRanges
               selectedSize={selectedSize}
+              setErrorTextVisible={setErrorTextVisible}
               setSelectedSize={setSelectedSize}
               sizes={product.size_range.sort((a, b) => a - b)}
             />
+            {errorTextVisible && <div>Please select a size</div>}
             <div className='button-wrapper'>
               <ProductQuantity quantity={quantity} setQuantity={setQuantity} />
               <Button text='Add to Cart' onClick={addItemToCart} />

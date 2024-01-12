@@ -63,7 +63,8 @@ svg {
 .order-summary-card {
     display: grid;
     justify-content: center;
-    grid-template-columns: 50% 40%;
+    grid-template-columns: 50% 35%;
+    gap: 50px;
 }
 .heading {
     padding-bottom: 26px;

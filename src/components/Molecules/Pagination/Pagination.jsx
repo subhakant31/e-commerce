@@ -15,8 +15,8 @@ const Pagination = ({
     <StyledPagination>
       <ul className='pagination'>
         {pageNumbers.map((number) => (
-          <li key={number} className={currentPage === number ? "active" : ""}>
-            <button onClick={() => paginate(number)}>{number}</button>
+          <li key={number} >
+            <button className={currentPage === number ? "active" : ""} onClick={() => paginate(number)}>{number}</button>
           </li>
         ))}
       </ul>

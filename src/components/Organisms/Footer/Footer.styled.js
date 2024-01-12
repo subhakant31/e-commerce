@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const FooterContainer = styled.footer`
   background-color: #f4f4f4;
   padding: 2.8em 0;
+  margin-top: 3em;
   .footer-wrapper,
   .footer-bottom {
     max-width: 1240px;

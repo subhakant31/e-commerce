@@ -38,6 +38,19 @@ export const StyledHeader = styled.header`
         font-size: 24px;
       }
     }
+    .icon-wrapper {
+      position:relative;
+      .count-indicator {
+        position: absolute;
+        top: -22px;
+        right: -4px;
+        padding: 3px 6px;
+        border-radius: 50%;
+        background-color: black;
+        color: white;
+      }
+   
+    }
   }
   &.sticky {
     position: sticky;

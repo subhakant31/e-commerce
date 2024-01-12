@@ -62,7 +62,7 @@ function Header() {
         onKeyDown={handleSubmit}
       ></InputField>
       <div className='icon-button-container'>
-        <Link to={"/usercart"} className='icon'>
+        <Link to={"/usercart"} className='icon icon-wrapper'>
           <BiCart />
           <div className='count-indicator'>{userCart.length}</div>
         </Link>

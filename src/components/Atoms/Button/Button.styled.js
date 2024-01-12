@@ -20,7 +20,7 @@ export const StyledButton = styled.div`
     color: ${(props) => (props.primary ? "#ffff" : "#000")};
     border: 1px solid #000;
     border-radius: 62px;
-
+    cursor:pointer;
     padding: 15px ${(props) => findSize(props.size)}px;
     font-size: 16px;
   }

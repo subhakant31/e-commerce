@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { StyledProductSizeRanges } from "./ProductSizeRanges.styled";
 
-function ProductSizeRanges({ sizes, selectedSize, setSelectedSize }) {
+function ProductSizeRanges({ sizes, selectedSize, setSelectedSize, setErrorTextVisible }) {
   const handleSizeChange = (event) => {
     const newSize = event.target.value;
+    setErrorTextVisible(false);
     setSelectedSize(newSize);
   };
 

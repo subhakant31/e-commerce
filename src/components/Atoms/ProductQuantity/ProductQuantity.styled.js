@@ -13,4 +13,8 @@ svg {
 width: 20px;
 height: 20px;
 }
+button {
+    border:0;
+    cursor:pointer;
+}
 `;

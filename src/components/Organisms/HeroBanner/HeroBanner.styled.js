@@ -5,7 +5,7 @@ export const StyledHeroBanner = styled.div`
     .banner-contents-wrapper {
         max-width:577px;
         position:absolute;
-        top:30%;
+        top:12%;
         padding-left:100px;
     }
 
