@@ -9,9 +9,10 @@ export const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 24px 100px;
-  // position: fixed;
-  // top: 0;
   z-index: 999;
+  @media screen and (max-width: 767px) {
+    padding: 24px;
+  }
   .navigation {
     .nav-list {
       display: flex;
@@ -58,5 +59,12 @@ export const StyledHeader = styled.header`
   &.sticky {
     position: sticky;
     top: 0;
+  }
+
+  @media screen and (max-width: 767px) {
+  .navigation {
+    display:none;
+  }
+  
   }
 `;

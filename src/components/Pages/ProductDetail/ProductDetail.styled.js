@@ -8,10 +8,17 @@ export const StyledProductsDetail = styled.div`
     display: grid;
     grid-template-columns: 40% 40%;
     margin: 4% 0;
+    @media screen and (max-width: 1200px) {
+        grid-template-columns: 90%;
+    }
 }
 .button-wrapper {
     display: flex;
     gap: 20px;
+    @media screen and (max-width: 767px) {
+        flex-direction: column;
+    align-items: center;
+    }
 }
 .product-left-container {
    background-color:#F0EEED;
@@ -23,6 +30,10 @@ export const StyledProductsDetail = styled.div`
     row-gap: 20px;
     .sub-heading {
         margin-top:0;
+    }
+    .error-message {
+        color: red;
+        font-style: italic;
     }
 }
 img {

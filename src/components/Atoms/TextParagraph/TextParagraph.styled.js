@@ -9,5 +9,6 @@ export const StyledTextParagraph = styled.div`
     font-weight: 400;
     letter-spacing: 0em;
     text-align: left;
+    text-wrap: wrap;
   }
 `;

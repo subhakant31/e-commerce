@@ -126,7 +126,7 @@ function ProductsDetail() {
               setSelectedSize={setSelectedSize}
               sizes={product.size_range.sort((a, b) => a - b)}
             />
-            {errorTextVisible && <div>Please select a size</div>}
+            {errorTextVisible && <div className="error-message">Please select a size</div>}
             <div className='button-wrapper'>
               <ProductQuantity quantity={quantity} setQuantity={setQuantity} />
               <Button text='Add to Cart' onClick={addItemToCart} />
