@@ -7,6 +7,8 @@ import Header from "./components/Organisms/Header/Header";
 import { GlobalStyles } from "./styles/globalStyles";
 import Footer from "./components/Organisms/Footer/Footer";
 import "./App.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import HomePage from "./components/Pages/HomePage/HomePage";
 import { ProductContext } from "./contexts/productContext";
 import ProductsList from "./components/Pages/ProductsList/ProductsList";
@@ -15,6 +17,7 @@ import ProductsDetail from "./components/Pages/ProductDetail/ProductDetail";
 import { UserCartContext } from "./contexts/userCartContext";
 import UserCart from "./components/Pages/UserCart/UserCart";
 import { SearchQueryContext } from "./contexts/productContext";
+
 function App() {
   const [productData, setProductData] = useState(
     JSON.parse(localStorage.getItem("productData")) || []
@@ -40,6 +43,18 @@ function App() {
       <>
         <GlobalStyles />
         <UserCartContext.Provider value={[userCart, setUserCart]}>
+          <ToastContainer
+            position='top-right'
+            autoClose={2000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover={false}
+            theme='light'
+          />
           <SearchQueryContext.Provider value={[searchQuery, setSearchQuery]}>
             <Header></Header>
             <Routes>
