@@ -11,11 +11,13 @@ import {
   centsToDollars,
   formatDateFromUnixTimestamp,
 } from "../../../helperFunctions";
-import { useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../../contexts/productContext";
 import { useParams } from "react-router-dom";
 import { UserCartContext } from "../../../contexts/userCartContext";
-
+import { ErrorText } from "../../Atoms/ErrorText/ErrorText";
 function ProductsDetail() {
   let [productData, setProductData] = useContext(ProductContext);
   const [userCart, setUserCart] = useContext(UserCartContext);
@@ -62,13 +64,12 @@ function ProductsDetail() {
   }
 
   function addItemToCart() {
-    // Check if selectedSize is defined
     if (!selectedSize) {
       setErrorTextVisible(true);
-      console.error("Please select a size before adding to the cart");
+      toast.error("Item unable to add item");
       return;
-    }
-    else {
+    } else {
+      toast.success("Item added to cart");
       setErrorTextVisible(false);
     }
 
@@ -102,7 +103,6 @@ function ProductsDetail() {
     <StyledProductsDetail>
       {loading ? (
         <>
-          {console.log(productData)}
           <Loader></Loader>
         </>
       ) : (
@@ -126,7 +126,13 @@ function ProductsDetail() {
               setSelectedSize={setSelectedSize}
               sizes={product.size_range.sort((a, b) => a - b)}
             />
-            {errorTextVisible && <div>Please select a size</div>}
+            {errorTextVisible && (
+              <ErrorText
+                text={"Please select a size"}
+                size={"small"}
+                color={"red"}
+              ></ErrorText>
+            )}
             <div className='button-wrapper'>
               <ProductQuantity quantity={quantity} setQuantity={setQuantity} />
               <Button text='Add to Cart' onClick={addItemToCart} />
