@@ -11,6 +11,8 @@ import Pagination from "../../Molecules/Pagination/Pagination";
 import Loader from "../../Atoms/Loader/Loader";
 import ProductControlPanel from "../../Organisms/ProductControlPanel/ProductControlPanel";
 import { useLocation } from "react-router-dom";
+import { ErrorText } from "../../Atoms/ErrorText/ErrorText";
+import { toast } from "react-toastify";
 
 function ProductsList(props) {
   const [productData, setProductData] = useContext(ProductContext);
@@ -22,14 +24,11 @@ function ProductsList(props) {
   const productsPerPage = 9;
 
   useEffect(() => {
-    // Assuming data fetching is asynchronous, set the data and loading state in useEffect
-    setProductData(data);
-    setLoading(false);
-  }, []); // Run once on component mount
-
-  if (loading) {
-    return <Loader />; // Return a loader while data is being fetched
-  }
+    setTimeout(() => {
+      setProductData(data);
+      setLoading(false);
+    }, 1000);
+  }, []);
 
   const filteredProducts = query
     ? productData?.sneakers?.filter((item) =>
@@ -74,7 +73,6 @@ function ProductsList(props) {
       default:
         sortedProducts = [...filteredProducts];
     }
-
     setProductData({ sneakers: sortedProducts });
     setCurrentPage(1);
   }
@@ -90,6 +88,13 @@ function ProductsList(props) {
         {/* Conditional rendering based on loading state */}
         {loading ? (
           <Loader />
+        ) : filteredProducts.length === 0 ? (
+          <ErrorText
+            text={"No results matching your search"}
+            size={"medium"}
+            color={"black"}
+            centeredText={true}
+          ></ErrorText>
         ) : (
           <div className='items-pagination-container'>
             {/* Product list */}
