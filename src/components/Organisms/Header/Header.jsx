@@ -7,11 +7,14 @@ import { SearchQueryContext } from "../../../contexts/productContext";
 import { BiCart } from "react-icons/bi";
 import { VscAccount } from "react-icons/vsc";
 import { UserCartContext } from "../../../contexts/userCartContext";
+import { toast } from "react-toastify";
 function Header() {
   const [isSticky, setSticky] = useState(false);
   const [searchQuery, setSearchQuery] = useContext(SearchQueryContext);
   const [userCart, setUserCart] = useContext(UserCartContext);
   const navigate = useNavigate();
+
+  
   const handleScroll = () => {
     const offset = window.scrollY;
     const scrollVal = window.scrollY;
@@ -30,11 +33,17 @@ function Header() {
     };
   }, []);
 
-  function handleSubmit(e) {
+  function handleQuerySubmit(e) {
     if (e.key === "Enter" || e.key === "Return") {
-      e.preventDefault(); // Prevents the default form submission behavior
+      e.preventDefault();
       setSearchQuery(e.target.value);
       navigate(`/products/?query=${e.target.value}`);
+
+      if (e.target.value === "") {
+        toast.success(`Showing all results`);
+      } else {
+        toast.success(`Showing results for '${e.target.value}'`);
+      }
     }
   }
 
@@ -59,7 +68,7 @@ function Header() {
       <InputField
         placeholder={"search for products..."}
         inputFieldType={"search"}
-        onKeyDown={handleSubmit}
+        onKeyDown={handleQuerySubmit}
       ></InputField>
       <div className='icon-button-container'>
         <Link to={"/usercart"} className='icon icon-wrapper'>
