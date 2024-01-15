@@ -1,4 +1,4 @@
-import { colorHashes } from "./data/pageData"; 
+import { colorHashes } from "./data/pageData";
 /* 
   @function : centsToDollars'
   @description : converts cents value to dollar value
@@ -36,26 +36,28 @@ export function formatDateFromUnixTimestamp(unixTimestamp) {
 
 export function findAllAvailableColors(products) {
   const allColors = [];
-  
+
   products.forEach((product) => {
-    if (product.color && !allColors.includes(product.color)) {
-      allColors.push(colorHashes[product.color]);
+    if (
+      product.color &&
+      !allColors.includes(colorHashes[product.color.toLowerCase()])
+    ) {
+      allColors.push(colorHashes[product.color.toLowerCase()]);
     }
-    
   });
- 
-  console.log(allColors)
+
+  console.log(allColors);
   return allColors;
 }
-
+  
 export function findAllAvailableBrands(products) {
   const allBrands = [];
- 
+
   products.forEach((product) => {
     if (product.brand_name && !allBrands.includes(product.brand_name)) {
       allBrands.push(product.brand_name);
     }
   });
-  
+
   return allBrands;
 }
