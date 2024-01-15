@@ -50,4 +50,26 @@ export const FooterContainer = styled.footer`
         display: flex;
     }
   }
+  @media screen and (max-width: 1200px) {
+    .footer-wrapper {
+      flex-direction:column;
+      padding: 0 24px;
+    }
+    .right-container {
+      display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 24px;
+    padding-top: 24px;
+    }
+    .footer-bottom {
+      flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .sub-heading  {
+      text-wrap:balance;
+    }
+  }
 `;

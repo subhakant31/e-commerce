@@ -40,5 +40,13 @@ export const StyledOrderSummary = styled.div`
     border-top: 2px solid rgba(0, 0, 0, 0.10);
     padding: 20px 0;
 }
+@media screen and (max-width: 1200px) { 
+    width: fit-content;
+    max-width: none;
+    margin: 0 24px;
+    .order-button {
+        flex-direction:column;
+    }
+}
 
 `;

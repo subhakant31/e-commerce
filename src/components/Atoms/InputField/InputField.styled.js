@@ -22,4 +22,7 @@ export const StyledInputField = styled.div`
       font-family: "Satoshi";
     }
   }
+  @media screen and (max-width: 767px) {
+    width:fit-content;
+  }
 `;

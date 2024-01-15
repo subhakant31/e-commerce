@@ -13,10 +13,10 @@ export const StyledPagination = styled.nav`
         border: none;
         cursor: pointer;
         border-radius: 50%;
-        border: 1px solid black;
+        border: none;
         padding: 0;
-        height: 28px;
-        width: 28px;
+        height: 36px;
+        width: 36px;
       }
     }
     .active {
