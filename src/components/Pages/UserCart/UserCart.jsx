@@ -1,7 +1,7 @@
 import { Heading } from "../../Atoms/Heading/Heading";
 import { StyledUserCart } from "./UserCart.styled";
 import data from "../../../data/productsData";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../Atoms/Button/Button";
 import ProductQuantity from "../../Atoms/ProductQuantity/ProductQuantity";
 import TextParagraph from "../../Atoms/TextParagraph/TextParagraph";
@@ -13,60 +13,84 @@ import { useContext } from "react";
 import { UserCartContext } from "../../../contexts/userCartContext";
 import { ProductContext } from "../../../contexts/productContext";
 import OrderSummaryCard from "../../Atoms/OrderSummaryCard/OrderSummaryCard";
+import { ErrorText } from "../../Atoms/ErrorText/ErrorText";
+import { toast } from "react-toastify";
 
 const UserCart = () => {
   const [userCart, setUserCart] = useContext(UserCartContext);
-
+  const navigate = useNavigate();
   function deleteItemFromCart(e) {
     const id = e.target.closest("[data-id]").dataset.id;
     setUserCart((prevUserCart) =>
       prevUserCart.filter((item) => item.item.id != id)
     );
+    toast.success(`Item ${id} Deleted`);
   }
 
   return (
     <StyledUserCart>
       <Heading size='medium' text={"Your cart"} centeredText={true} />
-      <div className='order-summary-card'>
-        <div className='cart-wrapper--main'>
-          {userCart.map((product, key) => {
-            return (
-              <div className='cart-details'>
-                <Link to={`/products/${product.item.id}`} className='cart-wrapper'>
-                  <img
-                    src={product.item.grid_picture_url}
-                    alt={"image of product"}
-                  />
-                  <div className='details'>
-                    <Heading text={product.item.name} size={"small"}></Heading>
-                    <div className='product-size'>
-                      Size: {product.selectedSize}
-                    </div>
-                    <div className='product-color'>
-                      Color: <ColorIcon color={product.item.color} />
-                    </div>
-                    <p>${centsToDollars(product.item.retail_price_cents)}</p>
-                    <div className="increment-button">
-                      <p>Total Item Selected:</p>
-                      <ProductQuantity quantity={product.quantity} />
-                    </div>
-                  </div>
-
-                </Link>
-                <div className='button-wrapper'>
-                  <RiDeleteBin6Line
-                    data-id={product.item.id}
-                    onClick={deleteItemFromCart}
-                  />
-
-
-                </div>
-              </div>
-            );
-          })}
+      {userCart.length === 0 ? (
+        <div className='page-error-dialogue'>
+          <ErrorText
+            text={"No items present in the cart"}
+            size={"medium"}
+            color={"black"}
+          ></ErrorText>
+          <Button
+            text={"browse products"}
+            primary={true}
+            onClick={() => {
+              navigate("/products");
+            }}
+            className={"navigate-home"}
+          ></Button>
         </div>
-        <OrderSummaryCard />
-      </div>
+      ) : (
+        <div className='order-summary-card'>
+          <div className='cart-wrapper--main'>
+            {userCart.map((product, key) => {
+              return (
+                <div className='cart-details'>
+                  <Link
+                    to={`/products/${product.item.id}`}
+                    className='cart-wrapper'
+                  >
+                    <img
+                      src={product.item.grid_picture_url}
+                      alt={"image of product"}
+                    />
+                    <div className='details'>
+                      <Heading
+                        text={product.item.name}
+                        size={"small"}
+                      ></Heading>
+                      <div className='product-size'>
+                        Size: {product.selectedSize}
+                      </div>
+                      <div className='product-color'>
+                        Color: <ColorIcon color={product.item.color} />
+                      </div>
+                      <p>${centsToDollars(product.item.retail_price_cents)}</p>
+                      <div className='increment-button'>
+                        <p>Total Item Selected:</p>
+                        <ProductQuantity quantity={product.quantity} />
+                      </div>
+                    </div>
+                  </Link>
+                  <div className='button-wrapper'>
+                    <RiDeleteBin6Line
+                      data-id={product.item.id}
+                      onClick={deleteItemFromCart}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <OrderSummaryCard />
+        </div>
+      )}
     </StyledUserCart>
   );
 };
