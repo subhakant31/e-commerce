@@ -8,6 +8,7 @@ import { BiCart } from "react-icons/bi";
 import { VscAccount } from "react-icons/vsc";
 import { UserCartContext } from "../../../contexts/userCartContext";
 import { toast } from "react-toastify";
+import HamburgerMenu from "../../Atoms/HamburgerMenu/HamburgerMenu";
 function Header() {
   const [isSticky, setSticky] = useState(false);
   const [searchQuery, setSearchQuery] = useContext(SearchQueryContext);
@@ -16,7 +17,6 @@ function Header() {
 
   
   const handleScroll = () => {
-    const offset = window.scrollY;
     const scrollVal = window.scrollY;
     if (scrollVal > 1) {
       setSticky(true);
@@ -46,15 +46,22 @@ function Header() {
       }
     }
   }
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+      setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <StyledHeader className={`${isSticky ? "sticky" : ""}`}>
+      <HamburgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+  
       <div className='logo'>
         <Link to={"/"}>
           <img src={headerData.logo.icon} alt={headerData.logo.alt} />
         </Link>
       </div>
-      <nav className='navigation'>
+      <nav className={`navigation ${isMenuOpen ? "hamburger-nav" :''}`}>
         <ul className='nav-list'>
           {headerData.navItems.map((item, key) => {
             return (

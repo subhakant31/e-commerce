@@ -9,6 +9,7 @@ export const StyledOrderSummary = styled.div`
     gap: 24px;
     max-width: 500px;
     width: 100%;
+    height: fit-content;
 .order-button-section {
     display: flex;
     flex-direction: column;

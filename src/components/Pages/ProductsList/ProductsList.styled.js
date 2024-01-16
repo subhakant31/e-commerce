@@ -22,4 +22,14 @@ export const StyledProductsList = styled.div`
     border: none;
     font-size: 16px;
   }
+  @media screen and (max-width: 767px) { 
+    .item-list {
+      grid-template-columns: repeat(1, 1fr);
+      }
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1440px) {
+    .item-list {
+    grid-template-columns: 50% 50%;
+    }
+  }
 `;

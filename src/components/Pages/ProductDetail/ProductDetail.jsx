@@ -131,6 +131,7 @@ function ProductsDetail() {
                 text={"Please select a size"}
                 size={"small"}
                 color={"red"}
+                className={"error-message "}
               ></ErrorText>
             )}
             <div className='button-wrapper'>

@@ -61,10 +61,34 @@ export const StyledHeader = styled.header`
     top: 0;
   }
 
-  @media screen and (max-width: 767px) {
-  .navigation {
+  @media screen and (max-width: 1200px) {
+  .navigation .nav-list{
     display:none;
   }
-  
+  .navigation.hamburger-nav .nav-list{
+    display:flex;
+    position: fixed;
+    top: 0;
+    background: aliceblue;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    gap: 24px;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 99;
   }
+  li {
+    padding-left:0;
+  }
+  }
+  @media screen and (max-width: 1200px) {
+   padding:24px 18px;
+  .logo {
+    margin-left: 2em;
+  }
+  }
+  
 `;

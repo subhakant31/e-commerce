@@ -6,13 +6,13 @@ export const StyledErrorText = styled.span`
       props.size === "large"
         ? "64px"
         : props.size === "medium"
-        ? "40px"
+        ? "32px"
         : "20px"};
     line-height: ${(props) =>
       props.size === "large"
         ? "64px"
         : props.size === "medium"
-        ? "50px"
+        ? "42px"
         : "30px"};
     color : ${(props) => props.color};
     font-family: Satoshi;

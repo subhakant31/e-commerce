@@ -75,7 +75,7 @@ export const StyledUserCart = styled.div`
   .order-summary-card {
     display: grid;
     justify-content: center;
-    grid-template-columns: 50% 35%;
+    grid-template-columns: 40% 35%;
     gap: 50px;
     @media screen and (max-width: 1200px) {
         display: flex;
@@ -102,7 +102,14 @@ h2.heading {
     padding-left: 100px;
     text-align:left;
 }
-
+.page-error-dialogue {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
 @media screen and (max-width: 1200px) {
     .cart-wrapper--main {
         margin: 0 24px;
@@ -110,6 +117,10 @@ h2.heading {
     .cart-details {
     gap:0;
     }
-       }
+    .page-error-dialogue span {
+      font-size: 24px;
+      line-height: 28px;
+    }
+}
 
 `;
