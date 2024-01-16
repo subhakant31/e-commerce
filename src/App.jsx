@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import RootLayout from "./components/RootLayout";
-import HeroBanner from "./components/Organisms/HeroBanner/HeroBanner";
 import Header from "./components/Organisms/Header/Header";
 import { GlobalStyles } from "./styles/globalStyles";
 import Footer from "./components/Organisms/Footer/Footer";
@@ -12,7 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 import HomePage from "./components/Pages/HomePage/HomePage";
 import { ProductContext } from "./contexts/productContext";
 import ProductsList from "./components/Pages/ProductsList/ProductsList";
-import { Card } from "./components/Molecules/Card/Card";
 import ProductsDetail from "./components/Pages/ProductDetail/ProductDetail";
 import { UserCartContext } from "./contexts/userCartContext";
 import UserCart from "./components/Pages/UserCart/UserCart";
