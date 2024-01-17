@@ -22,11 +22,6 @@ export const StyledInputField = styled.div`
       font-family: "Satoshi";
     }
   }
-  @media screen and (max-width: 450px) {
-    input {
-      display:none;
-    }
-  }
   @media screen and (max-width: 767px) {
     width:fit-content;
     padding: 8px 10px;

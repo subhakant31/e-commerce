@@ -40,11 +40,15 @@ function HeroBanner(props) {
             })}
           </ul>
         </div>
-        <img
+        <picture>
+          <source media="(max-width:1200px)" srcSet={heroBannerData.smallerImage}>
+          </source>
+          <img
           className='hero-image'
-          src={heroBannerData.image}
+          src={heroBannerData.defaultImage}
           alt={heroBannerData.imageAlt}
         />
+        </picture>
       </div>
     </StyledHeroBanner>
   );

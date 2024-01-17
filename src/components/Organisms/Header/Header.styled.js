@@ -97,9 +97,16 @@ export const StyledHeader = styled.header`
     }
   }
   @media screen and (max-width: 1200px) {
-    padding: 24px 18px;
-    .logo {
-      margin-left: 2em;
+   padding:24px 18px;
+  .logo {
+    margin-left: 2em;
+    img {
+      width: 64%;
     }
   }
+  .icon-button-container a:last-child {
+    display:none;
+  }
+}
+  
 `;
