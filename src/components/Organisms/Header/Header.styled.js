@@ -68,6 +68,9 @@ export const StyledHeader = styled.header`
   @media screen and (max-width: 1200px) {
     .navigation .nav-list {
       display: none;
+      li {
+        padding-left: 0;
+      }
     }
     .search-field-container {
       position: relative;
@@ -97,16 +100,15 @@ export const StyledHeader = styled.header`
     }
   }
   @media screen and (max-width: 1200px) {
-   padding:24px 18px;
-  .logo {
-    margin-left: 2em;
-    img {
-      width: 64%;
+    padding: 24px 18px;
+    .logo {
+      margin-left: 2em;
+      img {
+        width: 64%;
+      }
+    }
+    .icon-button-container a:last-child {
+      display: none;
     }
   }
-  .icon-button-container a:last-child {
-    display:none;
-  }
-}
-  
 `;

@@ -65,7 +65,14 @@ function Header() {
           {headerData.navItems.map((item, key) => {
             return (
               <li key={key}>
-                <Link to={item.href}>{item.title}</Link>
+                <Link
+                  to={item.href}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  {item.title}
+                </Link>
               </li>
             );
           })}
