@@ -57,6 +57,36 @@ export const StyledHeroBanner = styled.div`
   .shop-now-btn {
     margin-top: 32px;
   }
+  @media screen and (max-width: 1200px) {
+    .hero-image-container {
+      height: fit-content;
+      background-color: #F2F0F1;
+    }
+    .banner-contents-wrapper {
+      padding: 24px 24px 0 24px;
+      position: relative;
+      top: 0;
+      max-width: none;
+    }
+  .hero-image {
+    height: fit-content;
+  }
+  }
+@media screen and (max-width: 767px) {
+  .banner-contents-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .stats-list {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      gap: 24px;
 
-
+      li {
+        margin-right: 0;
+      }
+    }
+  }
+}
 `;

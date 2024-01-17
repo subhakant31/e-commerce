@@ -53,7 +53,7 @@ export const FooterContainer = styled.footer`
   @media screen and (max-width: 1200px) {
     .footer-wrapper {
       flex-direction:column;
-      padding: 0 24px;
+      padding: 0 0 0 24px;
     }
     .right-container {
       display: grid;
@@ -68,7 +68,7 @@ export const FooterContainer = styled.footer`
     }
   }
   @media screen and (max-width: 767px) {
-    .sub-heading  {
+    .footer-wrapper .sub-heading  {
       text-wrap:balance;
     }
   }

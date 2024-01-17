@@ -14,7 +14,8 @@ export const headerData = {
     alt: "company logo",
   },
   heroBanner: {
-    image: "./assets/hero-image.png",
+    defaultImage: "./assets/hero-image.png",
+    smallerImage:"./assets/hero-image-mobile.png",
     imageAlt: "man and a woman posing for image",
     heading: "FIND CLOTHES THAT MATCHES YOUR STYLE",
     subHeading:

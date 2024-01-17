@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const  StyledHamburgerMenu = styled.div `
 display:none;
 .hamburger-icon {
-    font-size: 32px;
+    font-size: 24px;
     cursor:pointer;
 }
 

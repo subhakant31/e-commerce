@@ -88,7 +88,13 @@ export const StyledHeader = styled.header`
    padding:24px 18px;
   .logo {
     margin-left: 2em;
+    img {
+      width: 64%;
+    }
   }
+  .icon-button-container a:last-child {
+    display:none;
   }
+}
   
 `;
