@@ -11,13 +11,14 @@ import {
   findAllAvailableBrands,
   findAllAvailableColors,
 } from "../../../helperFunctions";
+import data from "../../../data/productsData";
 
 function ProductControlPanel(props) {
   const [priceRange, setPriceRange] = useState([0, 100]);
   const [productData, setProductData] = useContext(ProductContext);
 
-  const availableColors = findAllAvailableColors(productData.sneakers);
-  const availableBrands = findAllAvailableBrands(productData.sneakers);
+  const availableColors = findAllAvailableColors(data.sneakers);
+  const availableBrands = findAllAvailableBrands(data.sneakers);
 
   const handleBrandFilter = (event) => {
     const brand = event.target.value;

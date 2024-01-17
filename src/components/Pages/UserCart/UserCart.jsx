@@ -74,7 +74,10 @@ const UserCart = () => {
                       <p>${centsToDollars(product.item.retail_price_cents)}</p>
                       <div className='increment-button'>
                         <p>Total Item Selected:</p>
-                        <ProductQuantity quantity={product.quantity} />
+                        <ProductQuantity
+                          productId={product.item.id}
+                          quantity={product.quantity}
+                        />
                       </div>
                     </div>
                   </Link>
@@ -82,6 +85,7 @@ const UserCart = () => {
                     <RiDeleteBin6Line
                       data-id={product.item.id}
                       onClick={deleteItemFromCart}
+                      title='delete item'
                     />
                   </div>
                 </div>

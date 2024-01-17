@@ -15,7 +15,6 @@ function Header() {
   const [userCart, setUserCart] = useContext(UserCartContext);
   const navigate = useNavigate();
 
-  
   const handleScroll = () => {
     const scrollVal = window.scrollY;
     if (scrollVal > 1) {
@@ -49,19 +48,19 @@ function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-      setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
     <StyledHeader className={`${isSticky ? "sticky" : ""}`}>
       <HamburgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
-  
+
       <div className='logo'>
         <Link to={"/"}>
           <img src={headerData.logo.icon} alt={headerData.logo.alt} />
         </Link>
       </div>
-      <nav className={`navigation ${isMenuOpen ? "hamburger-nav" :''}`}>
+      <nav className={`navigation ${isMenuOpen ? "hamburger-nav" : ""}`}>
         <ul className='nav-list'>
           {headerData.navItems.map((item, key) => {
             return (

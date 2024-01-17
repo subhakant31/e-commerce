@@ -1,15 +1,18 @@
 import styled from "styled-components";
 
 export const StyledCard = styled.div`
-max-width: 300px;
+  height: 100%;
   .product {
     text-decoration: none;
-    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 
     .image-container {
-      max-width: 300px;
+      display: grid;
+      place-content: center;
       border-radius: 20px;
-      background: #F0EEED;
+      background: #f0eeed;
       margin-bottom: 14px;
       img {
         width: 100%;
@@ -24,6 +27,7 @@ max-width: 300px;
       line-height: 27px;
       letter-spacing: 0em;
       color: #000;
+      flex-grow: 1;
     }
     .brand {
       display: block;

@@ -1,8 +1,9 @@
+import React, { useContext, useEffect, useState } from "react";
 import { StyledProductsList } from "./ProductsList.styled";
 import { Heading } from "../../Atoms/Heading/Heading";
-import { useContext, useEffect, useState } from "react";
 import data from "../../../data/productsData";
 import { Card } from "../../Molecules/Card/Card";
+import { CiFilter } from "react-icons/ci";
 import {
   ProductContext,
   SearchQueryContext,
@@ -12,17 +13,24 @@ import Loader from "../../Atoms/Loader/Loader";
 import ProductControlPanel from "../../Organisms/ProductControlPanel/ProductControlPanel";
 import { useLocation } from "react-router-dom";
 import { ErrorText } from "../../Atoms/ErrorText/ErrorText";
-import { toast } from "react-toastify";
 
 function ProductsList(props) {
   const [productData, setProductData] = useContext(ProductContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
+
+  const [isControlPanelVisible, setIsControlPanelVisible] = useState(() => {
+    if (window.innerWidth <= 1200) {
+      return false;
+    } else {
+      return true;
+    }
+  }); //setting visibility of control panel on the basis of device using
+
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const query = queryParams.get("query");
-  const productsPerPage = 9;
-
+  const productsPerPage = 9; //adjust number of products you want to display on one page
   useEffect(() => {
     setTimeout(() => {
       setProductData(data);
@@ -84,8 +92,13 @@ function ProductsList(props) {
       {/* Sorting dropdown */}
 
       <div className='product-list-filter-container'>
-        <ProductControlPanel></ProductControlPanel>
-        {/* Conditional rendering based on loading state */}
+        {/* Conditionally render ProductControlPanel based on screen size */}
+        {isControlPanelVisible && (
+          <div className='product-control-panel-container'>
+            <ProductControlPanel></ProductControlPanel>
+          </div>
+        )}
+
         {loading ? (
           <Loader />
         ) : filteredProducts.length === 0 ? (
@@ -98,18 +111,26 @@ function ProductsList(props) {
         ) : (
           <div className='items-pagination-container'>
             {/* Product list */}
-            <div className='sorting-btn-wrapper'>
+
+            <div className='btn-wrapper'>
+              <button
+                className='filter-btn'
+                onClick={() => setIsControlPanelVisible((prev) => !prev)}
+              >
+                <CiFilter />
+              </button>
               <select
                 className='sorting-buttons'
                 onChange={(e) => {
                   sortData(e.target.value);
                 }}
               >
-                <option value='price-high-low'>price(high-low)</option>
-                <option value='price-low-high'>price(low-high)</option>
+                <option value='price-high-low'>price (high-low)</option>
+                <option value='price-low-high'>price (low-high)</option>
                 <option value='latest'>latest</option>
               </select>
             </div>
+
             <ul className='item-list'>
               {currentProducts.map((item, key) => (
                 <Card

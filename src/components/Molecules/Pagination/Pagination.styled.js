@@ -12,7 +12,7 @@ export const StyledPagination = styled.nav`
         background-color: transparent;
         border: none;
         cursor: pointer;
-        border-radius: 50%;
+        border-radius: 10px;
         border: none;
         padding: 0;
         height: 36px;

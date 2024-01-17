@@ -18,9 +18,13 @@ const ProductQuantity = ({ quantity, setQuantity }) => {
 
   return (
     <StyledProductQuantity>
-      <button disabled={quantity===1}><FiMinus onClick={decrement}/></button>
+      <button disabled={quantity === 1}>
+        <FiMinus onClick={decrement} />
+      </button>
       {quantity}
-      <button disabled={quantity===5}><GoPlus onClick={increment} /></button>
+      <button disabled={quantity === 5}>
+        <GoPlus onClick={increment} />
+      </button>
     </StyledProductQuantity>
   );
 };

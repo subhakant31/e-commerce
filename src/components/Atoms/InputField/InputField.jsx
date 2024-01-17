@@ -8,10 +8,11 @@ export const InputField = ({
   inputFieldType,
   icon,
   onKeyDown,
+  className,
   ...props
 }) => {
   return (
-    <StyledInputField inputFieldType={inputFieldType}>
+    <StyledInputField inputFieldType={inputFieldType} className={className}>
       {inputFieldType === "search" ? <FaMagnifyingGlass /> : <CiMail />}
       <input
         type='text'
