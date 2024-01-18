@@ -29,6 +29,7 @@ export const StyledUserCart = styled.div`
   }
   .cart-wrapper {
     display: flex;
+    text-decoration: none;
     gap: 24px;
     @media screen and (max-width: 1200px) {
       display: block;
@@ -80,18 +81,10 @@ export const StyledUserCart = styled.div`
     }
   }
 
-  .increment-button {
-    display: flex;
-    align-items: center;
-    button {
-      display: none;
-    }
-    div {
-      padding: 0 0 0 4px;
-      background: none;
-      gap: 0;
-    }
+  .product-quantity-btn-wrapper {
+    margin-top: 10px;
   }
+
   h2.heading {
     padding-bottom: 26px;
     padding-left: 100px;

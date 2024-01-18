@@ -8,12 +8,11 @@ import { colorHashes } from "./data/pageData";
 
 export function centsToDollars(cents) {
   if (typeof cents !== "number") {
-    console.error("Input must be a number");
-    return null; // or handle the error as appropriate for your application
+    return null;
   }
 
   const dollars = cents / 100;
-  return dollars.toFixed(2); // Fixed to 2 decimal places
+  return dollars.toFixed(2);
 }
 
 /* 
@@ -34,6 +33,12 @@ export function formatDateFromUnixTimestamp(unixTimestamp) {
   return formattedDate;
 }
 
+/* 
+  @function : findAllAvailableColors
+  @description : returns an array of all the available color's hashes of product based on the color names
+  @returns : array of hash colors 
+  @param : products object
+*/
 export function findAllAvailableColors(products) {
   const allColors = [];
 
@@ -46,10 +51,15 @@ export function findAllAvailableColors(products) {
     }
   });
 
-  console.log(allColors);
   return allColors;
 }
-  
+
+/* 
+  @function : findAllAvailableBrands
+  @description : returns an array of all the available brands from all products array
+  @returns : array of brands
+  @param : products object
+*/
 export function findAllAvailableBrands(products) {
   const allBrands = [];
 

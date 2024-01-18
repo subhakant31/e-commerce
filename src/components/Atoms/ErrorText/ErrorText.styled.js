@@ -18,6 +18,7 @@ export const StyledErrorText = styled.span`
     font-family: Satoshi;
     font-weight: 700;
     letter-spacing: 0em;
+    width:100%;
     text-align: ${(props) => (props.centeredText ? "center" : "unset")}
   }
 `;

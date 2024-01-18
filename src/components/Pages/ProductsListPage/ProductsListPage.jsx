@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { StyledProductsList } from "./ProductsList.styled";
+import { StyledProductsList } from "./ProductsListPage.styled";
 import { Heading } from "../../Atoms/Heading/Heading";
 import data from "../../../data/productsData";
 import { Card } from "../../Molecules/Card/Card";
@@ -14,11 +14,10 @@ import ProductControlPanel from "../../Organisms/ProductControlPanel/ProductCont
 import { useLocation } from "react-router-dom";
 import { ErrorText } from "../../Atoms/ErrorText/ErrorText";
 
-function ProductsList(props) {
+function ProductsListPage(props) {
   const [productData, setProductData] = useContext(ProductContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
-
   const [isControlPanelVisible, setIsControlPanelVisible] = useState(() => {
     if (window.innerWidth <= 1200) {
       return false;
@@ -93,11 +92,6 @@ function ProductsList(props) {
 
       <div className='product-list-filter-container'>
         {/* Conditionally render ProductControlPanel based on screen size */}
-        {isControlPanelVisible && (
-          <div className='product-control-panel-container'>
-            <ProductControlPanel></ProductControlPanel>
-          </div>
-        )}
 
         {loading ? (
           <Loader />
@@ -107,56 +101,65 @@ function ProductsList(props) {
             size={"medium"}
             color={"black"}
             centeredText={true}
+            className={"error-text"}
           ></ErrorText>
         ) : (
-          <div className='items-pagination-container'>
-            {/* Product list */}
+          <>
+            {isControlPanelVisible && (
+              <div className='product-control-panel-container'>
+                <ProductControlPanel></ProductControlPanel>
+              </div>
+            )}
+            <div className='items-pagination-container'>
+              {/* Product list */}
 
-            <div className='btn-wrapper'>
-              <button
-                className='filter-btn'
-                onClick={() => setIsControlPanelVisible((prev) => !prev)}
-              >
-                <CiFilter />
-              </button>
-              <select
-                className='sorting-buttons'
-                onChange={(e) => {
-                  sortData(e.target.value);
-                }}
-              >
-                <option value='price-high-low'>price (high-low)</option>
-                <option value='price-low-high'>price (low-high)</option>
-                <option value='latest'>latest</option>
-              </select>
+              <div className='btn-wrapper'>
+                <button
+                  className='filter-btn'
+                  onClick={() => setIsControlPanelVisible((prev) => !prev)}
+                >
+                  <CiFilter />
+                </button>
+                <select
+                  className='sorting-buttons'
+                  onChange={(e) => {
+                    sortData(e.target.value);
+                  }}
+                >
+                  <option value='default'>Sort By</option>
+                  <option value='price-high-low'>price (high-low)</option>
+                  <option value='price-low-high'>price (low-high)</option>
+                  <option value='latest'>latest</option>
+                </select>
+              </div>
+
+              <ul className='item-list'>
+                {currentProducts.map((item, key) => (
+                  <Card
+                    image={item.original_picture_url}
+                    altText={"image of product"}
+                    title={item.name}
+                    brandName={item.brand_name}
+                    price={item.retail_price_cents}
+                    productId={item.id}
+                    key={item.id}
+                  ></Card>
+                ))}
+              </ul>
+
+              {/* Pagination */}
+              <Pagination
+                productsPerPage={productsPerPage}
+                totalProducts={filteredProducts.length}
+                paginate={paginate}
+                currentPage={currentPage}
+              />
             </div>
-
-            <ul className='item-list'>
-              {currentProducts.map((item, key) => (
-                <Card
-                  image={item.original_picture_url}
-                  altText={"image of product"}
-                  title={item.name}
-                  brandName={item.brand_name}
-                  price={item.retail_price_cents}
-                  productId={item.id}
-                  key={item.id}
-                ></Card>
-              ))}
-            </ul>
-
-            {/* Pagination */}
-            <Pagination
-              productsPerPage={productsPerPage}
-              totalProducts={filteredProducts.length}
-              paginate={paginate}
-              currentPage={currentPage}
-            />
-          </div>
+          </>
         )}
       </div>
     </StyledProductsList>
   );
 }
 
-export default ProductsList;
+export default ProductsListPage;

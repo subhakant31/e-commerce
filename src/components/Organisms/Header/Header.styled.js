@@ -85,8 +85,8 @@ export const StyledHeader = styled.header`
       position: fixed;
       top: 0;
       background: aliceblue;
-      width: 100vw;
-      height: 100vh;
+      width: 104vw;
+      height: 104vh;
       flex-direction: column;
       gap: 24px;
       left: 0;

@@ -1,18 +1,23 @@
+//Imports
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { headerData } from "../../../data/pageData";
+import HamburgerMenu from "../../Atoms/HamburgerMenu/HamburgerMenu";
+import { toast } from "react-toastify";
 import { InputField } from "../../Atoms/InputField/InputField";
 import { StyledHeader } from "./Header.styled";
-import { Link, useNavigate } from "react-router-dom";
-import { SearchQueryContext } from "../../../contexts/productContext";
+import { UserCartContext } from "../../../contexts/userCartContext";
+import { SearchQueryContext } from "../../../contexts/SearchQueryContext";
 import { BiCart } from "react-icons/bi";
 import { VscAccount } from "react-icons/vsc";
-import { UserCartContext } from "../../../contexts/userCartContext";
-import { toast } from "react-toastify";
-import HamburgerMenu from "../../Atoms/HamburgerMenu/HamburgerMenu";
+
 function Header() {
+
   const [isSticky, setSticky] = useState(false);
   const [searchQuery, setSearchQuery] = useContext(SearchQueryContext);
   const [userCart, setUserCart] = useContext(UserCartContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const navigate = useNavigate();
 
   const handleScroll = () => {
@@ -45,7 +50,6 @@ function Header() {
       }
     }
   }
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

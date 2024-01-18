@@ -1,4 +1,4 @@
-import { StyledProductsDetail } from "./ProductDetail.styled";
+import { StyledProductsDetail } from "./ProductDetailPage.styled";
 import { Heading } from "../../Atoms/Heading/Heading";
 import data from "../../../data/productsData";
 import { Button } from "../../Atoms/Button/Button";
@@ -18,7 +18,7 @@ import { ProductContext } from "../../../contexts/productContext";
 import { useParams } from "react-router-dom";
 import { UserCartContext } from "../../../contexts/userCartContext";
 import { ErrorText } from "../../Atoms/ErrorText/ErrorText";
-function ProductsDetail() {
+function ProductsDetailPage() {
   let [productData, setProductData] = useContext(ProductContext);
   const [userCart, setUserCart] = useContext(UserCartContext);
   const [selectedSize, setSelectedSize] = useState();
@@ -69,7 +69,6 @@ function ProductsDetail() {
       toast.error("Item unable to add item");
       return;
     } else {
-      toast.success("Item added to cart");
       setErrorTextVisible(false);
     }
 
@@ -85,6 +84,7 @@ function ProductsDetail() {
       const updatedCart = [...userCart];
       updatedCart[existingItemIndex].quantity += quantity;
       setUserCart(updatedCart);
+      toast.error("item already present");
     } else {
       // Item is not in the cart, add it
       setUserCart([
@@ -96,6 +96,7 @@ function ProductsDetail() {
           quantity: quantity,
         },
       ]);
+      toast.success("Item added to cart");
     }
   }
 
@@ -135,7 +136,12 @@ function ProductsDetail() {
               ></ErrorText>
             )}
             <div className='button-wrapper'>
-              <ProductQuantity quantity={quantity} setQuantity={setQuantity} />
+              <ProductQuantity
+                quantity={quantity}
+                setQuantity={setQuantity}
+                id={product.id}
+                itemFor={"product-page"}
+              />
               <Button text='Add to Cart' onClick={addItemToCart} />
             </div>
           </div>
@@ -182,4 +188,4 @@ function ProductsDetail() {
   );
 }
 
-export default ProductsDetail;
+export default ProductsDetailPage;

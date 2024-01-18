@@ -1,7 +1,7 @@
 import { StyledOrderSummary } from "./OrderSummaryCard.styled";
 import TextParagraph from "../../Atoms/TextParagraph/TextParagraph";
-import { InputField } from "../InputField/InputField";
-import { Button } from "../Button/Button";
+import { InputField } from "../../Atoms/InputField/InputField";
+import { Button } from "../../Atoms/Button/Button";
 import { UserCartContext } from "../../../contexts/userCartContext";
 import { useContext, useMemo } from "react";
 import { centsToDollars } from "../../../helperFunctions";

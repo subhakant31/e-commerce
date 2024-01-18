@@ -1,5 +1,5 @@
 import { Heading } from "../../Atoms/Heading/Heading";
-import { StyledUserCart } from "./UserCart.styled";
+import { StyledUserCart } from "./UserCartPage.styled";
 import data from "../../../data/productsData";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../Atoms/Button/Button";
@@ -12,13 +12,14 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { useContext } from "react";
 import { UserCartContext } from "../../../contexts/userCartContext";
 import { ProductContext } from "../../../contexts/productContext";
-import OrderSummaryCard from "../../Atoms/OrderSummaryCard/OrderSummaryCard";
+import OrderSummaryCard from "../../Molecules/OrderSummaryCard/OrderSummaryCard";
 import { ErrorText } from "../../Atoms/ErrorText/ErrorText";
 import { toast } from "react-toastify";
 
-const UserCart = () => {
+const UserCartPage = () => {
   const [userCart, setUserCart] = useContext(UserCartContext);
   const navigate = useNavigate();
+
   function deleteItemFromCart(e) {
     const id = e.target.closest("[data-id]").dataset.id;
     setUserCart((prevUserCart) =>
@@ -52,10 +53,7 @@ const UserCart = () => {
             {userCart.map((product, key) => {
               return (
                 <div className='cart-details'>
-                  <Link
-                    to={`/products/${product.item.id}`}
-                    className='cart-wrapper'
-                  >
+                  <div className='cart-wrapper'>
                     <img
                       src={product.item.grid_picture_url}
                       alt={"image of product"}
@@ -75,12 +73,14 @@ const UserCart = () => {
                       <div className='increment-button'>
                         <p>Total Item Selected:</p>
                         <ProductQuantity
-                          productId={product.item.id}
+                          id={product.item.id}
                           quantity={product.quantity}
+                          itemFor={"cart-page"}
+                          className={"product-quantity-btn-wrapper"}
                         />
                       </div>
                     </div>
-                  </Link>
+                  </div>
                   <div className='button-wrapper'>
                     <RiDeleteBin6Line
                       data-id={product.item.id}
@@ -99,4 +99,4 @@ const UserCart = () => {
   );
 };
 
-export default UserCart;
+export default UserCartPage;

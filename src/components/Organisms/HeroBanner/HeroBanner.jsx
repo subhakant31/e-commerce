@@ -10,11 +10,6 @@ function HeroBanner(props) {
   const heroBannerData = headerData.heroBanner;
   const navigate = useNavigate();
 
-  const handleButtonClick = () => {
-    // Navigate to the '/products' route on button click
-    navigate("/products");
-  };
-
   return (
     <StyledHeroBanner>
       <div className='hero-image-container'>
@@ -27,7 +22,9 @@ function HeroBanner(props) {
           <Button
             text='shop now'
             className='shop-now-btn'
-            onClick={handleButtonClick}
+            onClick={() => {
+              navigate("/products");
+            }}
           />
           <ul className='stats-list'>
             {heroBannerData.stats.map((item, key) => {
@@ -41,13 +38,15 @@ function HeroBanner(props) {
           </ul>
         </div>
         <picture>
-          <source media="(max-width:1200px)" srcSet={heroBannerData.smallerImage}>
-          </source>
+          <source
+            media='(max-width:1200px)'
+            srcSet={heroBannerData.smallerImage}
+          ></source>
           <img
-          className='hero-image'
-          src={heroBannerData.defaultImage}
-          alt={heroBannerData.imageAlt}
-        />
+            className='hero-image'
+            src={heroBannerData.defaultImage}
+            alt={heroBannerData.imageAlt}
+          />
         </picture>
       </div>
     </StyledHeroBanner>
