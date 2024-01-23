@@ -1,38 +1,39 @@
 import styled from "styled-components";
+import { device, fontWeight, fontSize } from "../../../utils/constant/style-const";
 
 export const StyledHeading = styled.div`
   .heading {
     font-size: ${(props) =>
       props.size === "large"
-        ? "64px"
+        ? `${fontSize.font64}`
         : props.size === "medium"
-        ? "40px"
-        : "20px"};
+        ? `${fontSize.font40}`
+        : `${fontSize.font20}`};
     line-height: ${(props) =>
       props.size === "large"
-        ? "64px"
+        ? `${fontSize.font64}`
         : props.size === "medium"
-        ? "50px"
-        : "30px"};
+        ? `${fontSize.font50}`
+        : `${fontSize.font30}`};
     font-family: Satoshi;
-    font-weight: 700;
+    font-weight: ${fontWeight.bold};
     letter-spacing: 0em;
     text-align: ${(props) => (props.centeredText ? "center" : "unset")};
   }
-  @media screen and (max-width: 1200px) {
+  @media screen and (${device.laptop}) {
     .heading {
       font-size: ${(props) =>
         props.size === "large"
-          ? "36px"
+          ? `${fontSize.font36}`
           : props.size === "medium"
-          ? "24px"
-          : "20px"};
+          ? `${fontSize.font24}`
+          : `${fontSize.font20}`};
       line-height: ${(props) =>
         props.size === "large"
-          ? "34px"
+          ? `${fontSize.font34}`
           : props.size === "medium"
-          ? "28px"
-          : "30px"};
+          ? `${fontSize.font28}`
+          : `${fontSize.font30}`};
 
       } 
   }

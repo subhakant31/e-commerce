@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { color, fontSize } from "../../../utils/constant/style-const";
 
 function findSize(size) {
   switch (size) {
@@ -16,12 +17,12 @@ function findSize(size) {
 export const StyledButton = styled.div`
   // margin-top: 32px;
   button {
-    background-color: ${(props) => (props.primary ? "#000" : "transparent")};
-    color: ${(props) => (props.primary ? "#ffff" : "#000")};
-    border: 1px solid #000;
+    background-color: ${(props) => (props.primary ? `${color.black}` : `${color.transparent}`)};
+    color: ${(props) => (props.primary ? `${color.white}` : `${color.black}`)};
+    border: 1px solid ${color.black};
     border-radius: 62px;
     cursor:pointer;
     padding: 15px ${(props) => findSize(props.size)}px;
-    font-size: 16px;
+    font-size: ${fontSize.font16};
   }
 `;

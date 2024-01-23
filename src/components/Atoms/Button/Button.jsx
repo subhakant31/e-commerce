@@ -7,17 +7,19 @@ export const Button = ({
   size,
   onClick,
   className,
+  title,
   ...props
 }) => {
   return (
     <StyledButton primary={primary} className={className} onClick={onClick}>
-      <button> {text}</button>
+      <button title={title}> {text}</button>
     </StyledButton>
   );
 };
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
+  title: PropTypes.string,
   primary: PropTypes.bool,
   size: PropTypes.oneOf(["small", "medium", "large"]),
   onClick: PropTypes.func,

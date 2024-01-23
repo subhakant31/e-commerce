@@ -1,105 +1,102 @@
-// ProductControlPanel.js
-import React, { useContext, useState } from "react";
+import React from "react";
 import { StyledControlPanel } from "./ProductControlPanel.styled";
 import { CiFilter } from "react-icons/ci";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import RangeSlider from "../../Atoms/RangeSlider/RangeSlider";
 import ColorIcon from "../../Atoms/ColorIcon/ColorIcon";
 import Accordion from "../../Atoms/Accordion/Accordion";
-import RangeSlider from "../../Atoms/RangeSlider/RangeSlider";
-import { ProductContext } from "../../../contexts/productContext";
 import {
   findAllAvailableBrands,
   findAllAvailableColors,
 } from "../../../helperFunctions";
 import data from "../../../data/productsData";
 
-function ProductControlPanel(props) {
-  const [priceRange, setPriceRange] = useState([0, 100]);
-  const [productData, setProductData] = useContext(ProductContext);
-
-  const availableColors = findAllAvailableColors(data.sneakers);
+function ProductControlPanel({
+  filtersApplied,
+  setFiltersApplied,
+  currentPage,
+  setCurrentPage,
+  ...props
+}) {
+  // Extract available brands and colors from the data
   const availableBrands = findAllAvailableBrands(data.sneakers);
+  const availableColors = findAllAvailableColors(data.sneakers);
 
-  const handleBrandFilter = (event) => {
-    const brand = event.target.value;
-    const isChecked = event.target.checked;
-    console.log(brand, isChecked);
+  // Handle brand filter change
+  const handleFilterChange = (event, filterType) => {
+    const value = event.target.value;
+    setCurrentPage(1);
 
-    // Update the productData based on brand filter
-    const updatedProducts = productData.sneakers.map((product) => {
-      if (isChecked && product.brand_name === brand) {
-        return { ...product, visible: true };
-      } else if (!isChecked && product.brand_name === brand) {
-        return { ...product, visible: false };
-      } else {
-        return product;
-      }
-    });
+    if (filterType === "brands") {
+      const selectedFilters = filtersApplied.selectedBrands;
+      const updatedFilters = selectedFilters.includes(value)
+        ? selectedFilters.filter((selectedFilter) => selectedFilter !== value)
+        : [...selectedFilters, value];
 
-    setProductData({ sneakers: updatedProducts });
-  };
+      setFiltersApplied({
+        ...filtersApplied,
+        selectedBrands: updatedFilters,
+      });
+    } else if (filterType === "colors") {
+      const selectedFilters = filtersApplied.selectedColors;
+      const updatedFilters = selectedFilters.includes(value)
+        ? selectedFilters.filter((selectedFilter) => selectedFilter !== value)
+        : [...selectedFilters, value];
 
-  const handleColorFilter = (event) => {
-    const color = event.target.value;
-    const isChecked = event.target.checked;
-
-    // Update the productData based on color filter
-    const updatedProducts = productData.sneakers.map((product) => {
-      if (isChecked && product.colorway === color) {
-        return { ...product, visible: true };
-      } else if (!isChecked && product.colorway === color) {
-        return { ...product, visible: false };
-      } else {
-        return product;
-      }
-    });
-
-    setProductData({ sneakers: updatedProducts });
+      setFiltersApplied({
+        ...filtersApplied,
+        selectedColors: updatedFilters,
+      });
+    }
   };
 
   return (
     <StyledControlPanel>
       <div className='heading'>
-        <h3>filters</h3>
+        <h3>Filters</h3>
         <CiFilter />
       </div>
-      <Accordion title='brands'>
-        {availableBrands.map((item, key) => (
+
+      <Accordion title='Brands'>
+        {availableBrands.map((brand, key) => (
           <label key={key}>
             <input
               type='checkbox'
-              value={`${item}`}
-              onChange={handleBrandFilter}
+              value={brand}
+              checked={filtersApplied.selectedBrands.includes(brand)}
+              onChange={(event) => handleFilterChange(event, "brands")}
             />
-            {item}
+            {brand}
           </label>
         ))}
       </Accordion>
-      <Accordion title='colors'>
+
+      <Accordion title='Colors'>
         <ul className='color-list'>
-          {availableColors.map((item, key) => (
+          {availableColors.map((color, key) => (
             <li key={key}>
               <label>
                 <input
                   type='checkbox'
-                  value={`${item}`}
-                  onChange={handleColorFilter}
+                  value={color}
+                  checked={filtersApplied.selectedColors.includes(color)}
+                  onChange={(event) => handleFilterChange(event, "colors")}
                 />
-                <ColorIcon color={item}></ColorIcon>
-                {item}
+                <ColorIcon color={color} />
+                {color}
               </label>
             </li>
           ))}
         </ul>
       </Accordion>
-      {/* <Accordion title='price'>
+
+      <Accordion title={"Price"}>
         <RangeSlider
-          min={0}
-          max={100}
-          value={priceRange}
-          onChange={(newRange) => setPriceRange(newRange)}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          filtersApplied={filtersApplied}
+          setFiltersApplied={setFiltersApplied}
         />
-      </Accordion> */}
+      </Accordion>
     </StyledControlPanel>
   );
 }

@@ -1,5 +1,5 @@
 //Imports
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { headerData } from "../../../data/pageData";
 import HamburgerMenu from "../../Atoms/HamburgerMenu/HamburgerMenu";
@@ -9,10 +9,8 @@ import { StyledHeader } from "./Header.styled";
 import { UserCartContext } from "../../../contexts/userCartContext";
 import { SearchQueryContext } from "../../../contexts/SearchQueryContext";
 import { BiCart } from "react-icons/bi";
-import { VscAccount } from "react-icons/vsc";
 
 function Header() {
-
   const [isSticky, setSticky] = useState(false);
   const [searchQuery, setSearchQuery] = useContext(SearchQueryContext);
   const [userCart, setUserCart] = useContext(UserCartContext);
@@ -69,14 +67,14 @@ function Header() {
           {headerData.navItems.map((item, key) => {
             return (
               <li key={key}>
-                <Link
+                <NavLink
                   to={item.href}
                   onClick={() => {
                     setIsMenuOpen(false);
                   }}
                 >
                   {item.title}
-                </Link>
+                </NavLink>
               </li>
             );
           })}
@@ -88,12 +86,9 @@ function Header() {
         onKeyDown={handleQuerySubmit}
       ></InputField>
       <div className='icon-button-container'>
-        <Link to={"/usercart"} className='icon icon-wrapper'>
+        <Link to={"/usercart"} className='icon icon-wrapper' title='show cart'>
           <BiCart />
           <div className='count-indicator'>{userCart.length}</div>
-        </Link>
-        <Link to={"/"} className='icon'>
-          <VscAccount />
         </Link>
       </div>
     </StyledHeader>

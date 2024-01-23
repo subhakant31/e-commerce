@@ -1,16 +1,17 @@
 import styled from "styled-components";
+import { color, device, fontSize } from "../../../utils/constant/style-const";
 
 export const StyledHeader = styled.header`
   font-family: "satoshi";
   box-sizing: border-box;
-  background-color: #ffff;
+  background-color: ${color.white};
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 24px 100px;
   z-index: 999;
-  @media screen and (max-width: 767px) {
+  @media screen and (${device.tablet}) {
     padding: 24px;
   }
   .navigation {
@@ -20,8 +21,8 @@ export const StyledHeader = styled.header`
       li {
         padding-left: 24px;
         a {
-          color: #000;
-          font-size: 16px;
+          color: ${color.black};
+          font-size: ${fontSize.font16};
           text-decoration: none;
         }
         &:first-child {
@@ -34,9 +35,9 @@ export const StyledHeader = styled.header`
     display: flex;
     .icon {
       margin-left: 14px;
-      color: #000;
+      color: ${color.black};
       svg {
-        font-size: 24px;
+        font-size: ${fontSize.font24};
       }
     }
     .icon-wrapper {
@@ -46,8 +47,8 @@ export const StyledHeader = styled.header`
         top: -22px;
         right: -4px;
         border-radius: 50%;
-        background-color: black;
-        color: white;
+        background-color: ${color.black};
+        color: ${color.white};
         display: grid;
         place-content: center;
         height: 20px;
@@ -61,11 +62,14 @@ export const StyledHeader = styled.header`
   }
   .search-btn {
     display: none;
-    font-size: 24px;
+    font-size: ${fontSize.font24}
     border: none;
   }
+  .active {
+    font-weight: 700;
+  }
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (${device.laptop}) {
     .navigation .nav-list {
       display: none;
       li {
@@ -84,7 +88,7 @@ export const StyledHeader = styled.header`
       display: flex;
       position: fixed;
       top: 0;
-      background: aliceblue;
+      background: ${color.gray94};
       width: 104vw;
       height: 104vh;
       flex-direction: column;
@@ -99,16 +103,13 @@ export const StyledHeader = styled.header`
       padding-left: 0;
     }
   }
-  @media screen and (max-width: 1200px) {
+  @media screen and (${device.laptop}) {
     padding: 24px 18px;
     .logo {
       margin-left: 2em;
       img {
         width: 64%;
       }
-    }
-    .icon-button-container a:last-child {
-      display: none;
     }
   }
 `;

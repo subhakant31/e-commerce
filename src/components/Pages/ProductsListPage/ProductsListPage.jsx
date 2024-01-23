@@ -4,32 +4,38 @@ import { Heading } from "../../Atoms/Heading/Heading";
 import data from "../../../data/productsData";
 import { Card } from "../../Molecules/Card/Card";
 import { CiFilter } from "react-icons/ci";
-import {
-  ProductContext,
-  SearchQueryContext,
-} from "../../../contexts/productContext";
+import { ProductContext } from "../../../contexts/productContext";
 import Pagination from "../../Molecules/Pagination/Pagination";
 import Loader from "../../Atoms/Loader/Loader";
 import ProductControlPanel from "../../Organisms/ProductControlPanel/ProductControlPanel";
 import { useLocation } from "react-router-dom";
 import { ErrorText } from "../../Atoms/ErrorText/ErrorText";
+import { errorText } from "../../../utils/constant/string-const";
+import { centsToDollars } from "../../../helperFunctions";
 
 function ProductsListPage(props) {
   const [productData, setProductData] = useContext(ProductContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [filtersApplied, setFiltersApplied] = useState({
+    selectedBrands: [],
+    selectedColors: [],
+    selectedPriceRange: [],
+  });
+
   const [isControlPanelVisible, setIsControlPanelVisible] = useState(() => {
     if (window.innerWidth <= 1200) {
       return false;
     } else {
       return true;
     }
-  }); //setting visibility of control panel on the basis of device using
+  });
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const query = queryParams.get("query");
-  const productsPerPage = 9; //adjust number of products you want to display on one page
+  const productsPerPage = 9;
+
   useEffect(() => {
     setTimeout(() => {
       setProductData(data);
@@ -37,16 +43,42 @@ function ProductsListPage(props) {
     }, 1000);
   }, []);
 
-  const filteredProducts = query
-    ? productData?.sneakers?.filter((item) =>
-        item.name.toLowerCase().includes(query.toLowerCase())
-      )
-    : productData?.sneakers || []; // Default to an empty array if productData or sneakers is undefined
+  const filteredProductsBySearch = productData?.sneakers
+    ? query
+      ? productData.sneakers.filter((item) =>
+          item.name.toLowerCase().includes(query.toLowerCase())
+        )
+      : productData.sneakers
+    : [];
+
+  const combinedFilters = {
+    selectedBrands: filtersApplied.selectedBrands,
+    selectedColors: filtersApplied.selectedColors,
+    selectedPriceRange: filtersApplied.selectedPriceRange,
+  };
+
+  const postSearchFilteredProducts = filteredProductsBySearch.filter((item) => {
+    const matchesBrand =
+      combinedFilters.selectedBrands.length === 0 ||
+      combinedFilters.selectedBrands.includes(item.brand_name);
+    const matchesColor =
+      combinedFilters.selectedColors.length === 0 ||
+      combinedFilters.selectedColors.includes(item.color);
+
+    const matchesPriceRange =
+      combinedFilters.selectedPriceRange.length === 0 ||
+      (centsToDollars(item.retail_price_cents) >=
+        combinedFilters.selectedPriceRange[0] &&
+        centsToDollars(item.retail_price_cents) <=
+          combinedFilters.selectedPriceRange[1]);
+
+    return matchesBrand && matchesColor && matchesPriceRange;
+  });
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
 
-  const currentProducts = filteredProducts.slice(
+  const currentProducts = postSearchFilteredProducts.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
@@ -60,26 +92,27 @@ function ProductsListPage(props) {
 
     switch (value) {
       case "price-high-low":
-        sortedProducts = [...filteredProducts].sort(
+        sortedProducts = [...filteredProductsBySearch].sort(
           (a, b) => b.retail_price_cents - a.retail_price_cents
         );
         break;
 
       case "price-low-high":
-        sortedProducts = [...filteredProducts].sort(
+        sortedProducts = [...filteredProductsBySearch].sort(
           (a, b) => a.retail_price_cents - b.retail_price_cents
         );
         break;
 
       case "latest":
-        sortedProducts = [...filteredProducts].sort(
+        sortedProducts = [...filteredProductsBySearch].sort(
           (a, b) => new Date(b.release_date) - new Date(a.release_date)
         );
         break;
 
       default:
-        sortedProducts = [...filteredProducts];
+        sortedProducts = [...filteredProductsBySearch];
     }
+
     setProductData({ sneakers: sortedProducts });
     setCurrentPage(1);
   }
@@ -87,32 +120,22 @@ function ProductsListPage(props) {
   return (
     <StyledProductsList>
       <Heading size='medium' text={"Shop"} centeredText></Heading>
-
-      {/* Sorting dropdown */}
-
       <div className='product-list-filter-container'>
-        {/* Conditionally render ProductControlPanel based on screen size */}
-
         {loading ? (
           <Loader />
-        ) : filteredProducts.length === 0 ? (
-          <ErrorText
-            text={"No results matching your search"}
-            size={"medium"}
-            color={"black"}
-            centeredText={true}
-            className={"error-text"}
-          ></ErrorText>
         ) : (
           <>
             {isControlPanelVisible && (
               <div className='product-control-panel-container'>
-                <ProductControlPanel></ProductControlPanel>
+                <ProductControlPanel
+                  filtersApplied={filtersApplied}
+                  currentPage={currentPage}
+                  setCurrentPage={setCurrentPage}
+                  setFiltersApplied={setFiltersApplied}
+                ></ProductControlPanel>
               </div>
             )}
             <div className='items-pagination-container'>
-              {/* Product list */}
-
               <div className='btn-wrapper'>
                 <button
                   className='filter-btn'
@@ -120,6 +143,7 @@ function ProductsListPage(props) {
                 >
                   <CiFilter />
                 </button>
+
                 <select
                   className='sorting-buttons'
                   onChange={(e) => {
@@ -132,25 +156,46 @@ function ProductsListPage(props) {
                   <option value='latest'>latest</option>
                 </select>
               </div>
+              <div className='product-list-info-wrapper'>
+                <span className='pagination-info'>
+                  {query
+                    ? `Showing results for '${query}' `
+                    : `Showing all products`}
+                </span>
+                <span className='pagination-info'>{`Showing ${
+                  indexOfFirstProduct + 1
+                }-${Math.min(
+                  indexOfLastProduct,
+                  postSearchFilteredProducts.length
+                )} of ${postSearchFilteredProducts.length} items`}</span>
+              </div>
+              {currentProducts.length === 0 ? (
+                <ErrorText
+                  text={errorText.noResultText}
+                  size={"medium"}
+                  color={"black"}
+                  centeredText={true}
+                  className={"error-text"}
+                ></ErrorText>
+              ) : (
+                <ul className='item-list'>
+                  {currentProducts.map((item, key) => (
+                    <Card
+                      image={item.original_picture_url}
+                      altText={"image of product"}
+                      title={item.name}
+                      brandName={item.brand_name}
+                      price={item.retail_price_cents}
+                      productId={item.id}
+                      key={item.id}
+                    ></Card>
+                  ))}
+                </ul>
+              )}
 
-              <ul className='item-list'>
-                {currentProducts.map((item, key) => (
-                  <Card
-                    image={item.original_picture_url}
-                    altText={"image of product"}
-                    title={item.name}
-                    brandName={item.brand_name}
-                    price={item.retail_price_cents}
-                    productId={item.id}
-                    key={item.id}
-                  ></Card>
-                ))}
-              </ul>
-
-              {/* Pagination */}
               <Pagination
                 productsPerPage={productsPerPage}
-                totalProducts={filteredProducts.length}
+                totalProducts={postSearchFilteredProducts.length}
                 paginate={paginate}
                 currentPage={currentPage}
               />

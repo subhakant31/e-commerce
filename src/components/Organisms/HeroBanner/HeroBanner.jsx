@@ -5,6 +5,8 @@ import { Heading } from "../../Atoms/Heading/Heading";
 import { Button } from "../../Atoms/Button/Button";
 import TextParagraph from "../../Atoms/TextParagraph/TextParagraph";
 import { useNavigate } from "react-router-dom";
+import { buttonText } from "../../../utils/constant/string-const";
+import { device } from "../../../utils/constant/style-const";
 
 function HeroBanner(props) {
   const heroBannerData = headerData.heroBanner;
@@ -20,8 +22,9 @@ function HeroBanner(props) {
             subText={true}
           ></TextParagraph>
           <Button
-            text='shop now'
+            text= {buttonText.shopNow}
             className='shop-now-btn'
+            title={buttonText.shopNow}
             onClick={() => {
               navigate("/products");
             }}
@@ -39,7 +42,7 @@ function HeroBanner(props) {
         </div>
         <picture>
           <source
-            media='(max-width:1200px)'
+            media={device.laptop}
             srcSet={heroBannerData.smallerImage}
           ></source>
           <img

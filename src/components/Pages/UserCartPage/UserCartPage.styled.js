@@ -1,4 +1,10 @@
 import styled from "styled-components";
+import {
+  color,
+  device,
+  fontSize,
+  fontWeight,
+} from "../../../utils/constant/style-const";
 
 export const StyledUserCart = styled.div`
   .cart-wrapper--main {
@@ -7,17 +13,41 @@ export const StyledUserCart = styled.div`
     padding: 20px 24px;
     align-items: flex-start;
     border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid ${color.black100};
     flex-direction: column;
     row-gap: 16px;
     height: fit-content;
   }
   .cart-details {
-    display: flex;
-    gap: 10rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid ${color.black100};
     padding-bottom: 16px;
     margin-bottom: 16px;
+    width: 100%;
+    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 72% 23%;
+    @media screen and (${device.tablet}) {
+      grid-template-columns: 100%;
+    }
+  }
+  .price-quantity-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .image-wrapper {
+    height: 100%;
+    background-color: #f0eeed;
+    border-radius: 20px;
+    display: grid;
+    place-content: center;
+    padding: 0 20px;
+  }
+  .product-price {
+    font-family: Satoshi;
+    font-size: ${fontSize.font24};
+    font-weight: ${fontWeight.bold};
+    line-height: 32px;
   }
   .cart-details:last-child {
     border-bottom: none;
@@ -31,7 +61,8 @@ export const StyledUserCart = styled.div`
     display: flex;
     text-decoration: none;
     gap: 24px;
-    @media screen and (max-width: 1200px) {
+    height: fit-content;
+    @media screen and (${device.laptop}) {
       display: block;
     }
     .details {
@@ -39,8 +70,25 @@ export const StyledUserCart = styled.div`
       gap: 16px;
       flex-direction: column;
       justify-content: center;
-      color: #000;
-      font-weight: 500;
+      color: ${color.black};
+      font-weight: ${fontWeight.medium};
+      a {
+        color: ${color.black};
+      }
+      .increment-button {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        .product-quantity-btn-wrapper {
+          padding: 0.5em 0.25em;
+          margin-top: 0;
+          button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
     }
   }
   .product-color {
@@ -53,16 +101,19 @@ export const StyledUserCart = styled.div`
     width: 125px;
     height: 187px;
     flex-shrink: 0;
-    @media screen and (max-width: 1200px) {
+    @media screen and (${device.laptop}) {
       width: fit-content;
     }
   }
   .button-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: end;
-    height: 10.8em;
+    justify-content: space-between;
+    height: auto;
+    @media screen and (${device.tablet}) {
+      flex-direction: row-reverse;
+    }
   }
   svg {
     width: 24px;
@@ -74,7 +125,8 @@ export const StyledUserCart = styled.div`
     justify-content: center;
     grid-template-columns: 40% 35%;
     gap: 50px;
-    @media screen and (max-width: 1200px) {
+    margin-top: 20px;
+    @media screen and (${device.laptop}) {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -85,11 +137,6 @@ export const StyledUserCart = styled.div`
     margin-top: 10px;
   }
 
-  h2.heading {
-    padding-bottom: 26px;
-    padding-left: 100px;
-    text-align: left;
-  }
   .page-error-dialogue {
     display: flex;
     justify-content: center;
@@ -98,7 +145,7 @@ export const StyledUserCart = styled.div`
     gap: 24px;
     text-align: center;
   }
-  @media screen and (max-width: 1200px) {
+  @media screen and (${device.laptop}) {
     .cart-wrapper--main {
       margin: 0 24px;
     }
@@ -106,7 +153,7 @@ export const StyledUserCart = styled.div`
       gap: 0;
     }
     .page-error-dialogue span {
-      font-size: 24px;
+      font-size: ${fontSize.font20};
       line-height: 28px;
     }
   }

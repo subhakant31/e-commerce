@@ -1,13 +1,13 @@
 import styled from 'styled-components';
+import { color, device } from '../../../utils/constant/style-const';
 
 export const FooterContainer = styled.footer`
-  background-color: #f4f4f4;
+  background-color: ${color.gray};
   padding: 2.8em 0;
   margin-top: 3em;
   .footer-wrapper,
   .footer-bottom {
     max-width: 1240px;
-    width: 100%;
     margin: 0 auto;
   }
   .footer-wrapper {
@@ -22,7 +22,7 @@ export const FooterContainer = styled.footer`
         svg {
             height:28px;
             width:28px;
-            color: #000;
+            color: ${color.black};
         }
     }
   }
@@ -34,7 +34,7 @@ export const FooterContainer = styled.footer`
     ul li {
         padding-bottom: 1em; 
         a {
-          color:rgba(0, 0, 0, 0.60);
+          color:${color.black};
         }
     }
     h4 {
@@ -43,14 +43,14 @@ export const FooterContainer = styled.footer`
   }
   .footer-bottom {
     padding-top: 1.5em;
-    border-top: 1px solid rgba(0, 0, 0, 0.10);
+    border-top: 1px solid ${color.black700};
     display: flex;
     justify-content: space-between;
     .payment-cards {
         display: flex;
     }
   }
-  @media screen and (max-width: 1200px) {
+  @media screen and (${device.laptop}) {
     .footer-wrapper {
       flex-direction:column;
       padding: 0 0 0 24px;
@@ -67,7 +67,7 @@ export const FooterContainer = styled.footer`
     gap: 18px;
     }
   }
-  @media screen and (max-width: 767px) {
+  @media screen and (${device.tablet}) {
     .footer-wrapper .sub-heading  {
       text-wrap:balance;
     }

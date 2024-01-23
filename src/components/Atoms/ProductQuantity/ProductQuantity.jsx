@@ -35,16 +35,16 @@ const ProductQuantity = ({ quantity, setQuantity, className, id, itemFor }) => {
     const foundItem = userCart.find((item) => item.item.id === id);
     return foundItem ? foundItem.quantity : undefined;
   }
-  
+
   return (
     <StyledProductQuantity className={className}>
-      <button disabled={quantity === 1}>
+      <button disabled={quantity === 1} title='decrease quantity'>
         <FiMinus onClick={decrement} />
       </button>
       {itemFor === "product-page"
         ? quantity
         : itemFor === "cart-page" && findQuantityFromId(id)}
-      <button>
+      <button title='increase quantity'>
         <GoPlus onClick={increment} />
       </button>
     </StyledProductQuantity>

@@ -43,11 +43,8 @@ export function findAllAvailableColors(products) {
   const allColors = [];
 
   products.forEach((product) => {
-    if (
-      product.color &&
-      !allColors.includes(colorHashes[product.color.toLowerCase()])
-    ) {
-      allColors.push(colorHashes[product.color.toLowerCase()]);
+    if (product.color && !allColors.includes(product.color)) {
+      allColors.push(product.color);
     }
   });
 

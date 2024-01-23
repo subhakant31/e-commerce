@@ -3,11 +3,11 @@ import logo from "../assets/icons/logo.svg";
 import { BiCart } from "react-icons/bi";
 import { VscAccount } from "react-icons/vsc";
 
-import Applecard from "../assets/paymentCards/Apple.png"
-import Googlecard from "../assets/paymentCards/Google.svg"
-import Mastercard from "../assets/paymentCards/Master.svg"
-import Paypalcard from "../assets/paymentCards/Paypal.svg"
-import Visacard from "../assets/paymentCards/Visa.svg"
+import Applecard from "../assets/paymentCards/Apple.png";
+import Googlecard from "../assets/paymentCards/Google.svg";
+import Mastercard from "../assets/paymentCards/Master.svg";
+import Paypalcard from "../assets/paymentCards/Paypal.svg";
+import Visacard from "../assets/paymentCards/Visa.svg";
 export const headerData = {
   logo: {
     icon: logo,
@@ -15,7 +15,7 @@ export const headerData = {
   },
   heroBanner: {
     defaultImage: "./assets/hero-image.png",
-    smallerImage:"./assets/hero-image-mobile.png",
+    smallerImage: "./assets/hero-image-mobile.png",
     imageAlt: "man and a woman posing for image",
     heading: "FIND CLOTHES THAT MATCHES YOUR STYLE",
     subHeading:
@@ -37,24 +37,24 @@ export const headerData = {
   },
   navItems: [
     {
-      title: "shop",
+      title: "Shop",
       href: "/products",
     },
     {
-      title: "new arrivals",
+      title: "New Arrivals",
       href: "/latest-products",
     },
     {
-      title: "on sale",
+      title: "On Sale",
       href: "/latest-products",
     },
     {
-      title: "brands",
+      title: "Brands",
       href: "/all-brands",
     },
   ],
   searchBar: {
-    placeHolder: "search for products",
+    placeHolder: "Search for Products",
     icon: "FaSearch",
   },
   icons: [
@@ -110,28 +110,34 @@ export const footerData = {
   bottom: {
     copyright: "Shop.co © 2000-2023, All Rights Reserved",
     paymentCards: [
-      {src: Applecard, alt: 'Apple Card'},
-      {src: Googlecard, alt: 'Google Card'},
-      {src: Mastercard, alt: 'Master Card'},
-      {src: Paypalcard, alt: 'Paypal Card'},
-      {src: Visacard, alt: 'Visa Card'},
-    ]
+      { src: Applecard, alt: "Apple Card" },
+      { src: Googlecard, alt: "Google Card" },
+      { src: Mastercard, alt: "Master Card" },
+      { src: Paypalcard, alt: "Paypal Card" },
+      { src: Visacard, alt: "Visa Card" },
+    ],
   },
 };
 
-
 export const colorHashes = {
-  red: '#FF0000',
-  black : '#000',
-  green: '#00FF00',
-  blue: '#0000FF',
-  yellow: '#FFFF00',
-  purple: '#800080',
-  cyan: '#00FFFF',
-  orange: '#FFA500',
-  pink: '#FFC0CB',
-  brown: '#A52A2A',
-  gray: '#808080',
-  cream: '#FFFDD0'
+  red: "#FF0000",
+  black: "#000",
+  green: "#00FF00",
+  blue: "#0000FF",
+  yellow: "#FFFF00",
+  purple: "#800080",
+  cyan: "#00FFFF",
+  orange: "#FFA500",
+  pink: "#FFC0CB",
+  brown: "#A52A2A",
+  gray: "#808080",
+  cream: "#FFFDD0",
   // Add more colors as needed
+};
+
+export const errorData = {
+  errorImage: {
+    image: "./assets/error-image.png",
+    imageAlt: "Page not Found",
+  },
 };

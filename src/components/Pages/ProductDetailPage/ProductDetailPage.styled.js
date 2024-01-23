@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { color, device, fontSize, fontWeight } from "../../../utils/constant/style-const";
 
 export const StyledProductsDetail = styled.div`
 .product-view-wrapper {
@@ -8,20 +9,20 @@ export const StyledProductsDetail = styled.div`
     display: grid;
     grid-template-columns: 40% 40%;
     margin: 4% 0;
-    @media screen and (max-width: 1200px) {
+    @media screen and (${device.laptop}) {
         grid-template-columns: 90%;
     }
 }
 .button-wrapper {
     display: flex;
     gap: 20px;
-    @media screen and (max-width: 767px) {
+    @media screen and (${device.tablet}) {
         flex-direction: column;
     align-items: center;
     }
 }
 .product-left-container {
-   background-color:#F0EEED;
+   background-color:${color.black500};
    border-radius: 20px;
 }
 .product-right-container {
@@ -46,24 +47,24 @@ height: 530px;
     gap:12px;
 }
 p {
-font-size: 32px;
-font-weight: 700;
+font-size: ${fontSize.font32};
+font-weight: ${fontWeight.bold};
 }
 table {
     width: 100%;
 }
 th {
-    background-color: #fff;
-    font-size: 24px;
-    font-weight: 700;
+    background-color: ${color.white}
+    font-size: ${fontSize.font24};
+    font-weight: ${fontWeight.bold};
     padding-bottom: 14px;
 }
 tbody  {
     tr {
-        background-color: #dddddd;
+        background-color: ${color.gray700};
     }
     td {
-        border: 2px solid #fff;
+        border: 2px solid ${color.white};
         padding: 8px 32px 8px 8px;
     }
 }

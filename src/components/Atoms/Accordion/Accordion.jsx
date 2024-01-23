@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-
+import {
+  MdOutlineKeyboardArrowDown,
+  MdOutlineKeyboardArrowUp,
+} from "react-icons/md";
+import { StyledAccordion } from "./Accordion.styled";
 function Accordion({ title, children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className='accordion'>
+    <StyledAccordion title={isOpen ? "collapse" : "expand"}>
       <div
         className='filter-heading'
         onClick={() => {
@@ -13,10 +16,10 @@ function Accordion({ title, children }) {
         }}
       >
         <h3>{title}</h3>
-        <MdOutlineKeyboardArrowDown />
+        {isOpen ? <MdOutlineKeyboardArrowUp /> : <MdOutlineKeyboardArrowDown />}
       </div>
       {isOpen && <div className='filter-contents'>{children}</div>}
-    </div>
+    </StyledAccordion>
   );
 }
 

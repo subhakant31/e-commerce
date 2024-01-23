@@ -1,39 +1,40 @@
-// TwoPointSlider.js
-import React from "react";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
+import { color } from "../../../utils/constant/style-const";
 
-function RangeSlider({ min, max, onChange, value }) {
-  const [minValue, maxValue] = value;
-
-  const handleMinChange = (e) => {
-    const newValue = parseInt(e.target.value, 10);
-    onChange([newValue, maxValue]);
+export default function RangeSlider({
+  filtersApplied,
+  setFiltersApplied,
+  currentPage,
+  setCurrentPage,
+  ...props
+}) {
+  const valueLabelFormat = (value) => {
+    return `$${value}`;
   };
+  const [value, setValue] = React.useState([0, 500]);
 
-  const handleMaxChange = (e) => {
-    const newValue = parseInt(e.target.value, 10);
-    onChange([minValue, newValue]);
+  const handleChange = (event, newValue) => {
+    setCurrentPage(1);
+    setValue(newValue);
+    setFiltersApplied({ ...filtersApplied, selectedPriceRange: newValue }); // Fix here
   };
 
   return (
-    <div className='two-point-slider'>
-      <label>{minValue}</label>
-      <input
-        type='range'
-        min={min}
-        max={max}
-        value={minValue}
-        onChange={handleMinChange}
+    <Box sx={{ marginTop: "50px" }}>
+      <Slider
+        sx = {{color:`${color.black}`}}
+        aria-label='Always visible'
+        defaultValue={80}
+        value={value}
+        min={0}
+        max={500}
+        onChange={handleChange}
+        step={5}
+        valueLabelDisplay='on'
+        valueLabelFormat={valueLabelFormat}
       />
-      <label>{maxValue}</label>
-      <input
-        type='range'
-        min={min}
-        max={max}
-        value={maxValue}
-        onChange={handleMaxChange}
-      />
-    </div>
+    </Box>
   );
 }
-
-export default RangeSlider;

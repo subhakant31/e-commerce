@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { color, fontSize } from "../../../utils/constant/style-const";
 
 export const StyledPagination = styled.nav`
   .pagination {
@@ -8,8 +9,8 @@ export const StyledPagination = styled.nav`
     li {
       margin-left: 10px;
       button {
-        font-size: 24px;
-        background-color: transparent;
+        font-size: ${fontSize.font24};
+        background-color: ${color.transparent};
         border: none;
         cursor: pointer;
         border-radius: 10px;
@@ -20,7 +21,7 @@ export const StyledPagination = styled.nav`
       }
     }
     .active {
-      background-color: lightgray;
+      background-color: ${color.lightGray};
     }
   }
 `;

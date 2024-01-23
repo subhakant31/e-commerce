@@ -4,6 +4,7 @@ import UserCartPage from "./components/Pages/UserCartPage/UserCartPage";
 import ProductsDetailPage from "./components/Pages/ProductDetailPage/ProductDetailPage";
 import ProductsListPage from "./components/Pages/ProductsListPage/ProductsListPage";
 import HomePage from "./components/Pages/HomePage/HomePage";
+import ErrorPage from "./components/Pages/ErrorPage/ErrorPage";
 
 const routes = [
   {
@@ -30,6 +31,10 @@ const routes = [
       },
     ],
   },
+  {
+    path: "*",
+    element: <ErrorPage />
+  }
 ];
 
 const router = createBrowserRouter(routes);

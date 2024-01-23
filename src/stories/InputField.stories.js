@@ -12,6 +12,5 @@ export default {
 export const Default = {
   args: {
     placeHolder: "enter text",
-    icon: undefined,
   },
 };

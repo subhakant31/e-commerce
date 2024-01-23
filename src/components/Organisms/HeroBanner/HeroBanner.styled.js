@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { color, device, fontSize, fontWeight } from "../../../utils/constant/style-const";
 
 export const StyledHeroBanner = styled.div`
     position:relative;
@@ -37,16 +38,16 @@ export const StyledHeroBanner = styled.div`
         }
         .stat-value {
             font-family: Satoshi;
-            font-size: 40px;
-            font-weight: 700;
+            font-size: ${fontSize.font40};
+            font-weight: ${fontWeight.bold};
             line-height: 54px;
             letter-spacing: 0em;
 
         }
         .stat-title {
             font-family: Satoshi;
-            font-size: 16px;
-            font-weight: 400;
+            font-size: ${fontSize.font16};
+            font-weight: ${fontWeight.regular};
             line-height: 22px;
             letter-spacing: 0em;
 
@@ -57,10 +58,10 @@ export const StyledHeroBanner = styled.div`
   .shop-now-btn {
     margin-top: 32px;
   }
-  @media screen and (max-width: 1200px) {
+  @media screen and (${device.laptop}) {
     .hero-image-container {
       height: fit-content;
-      background-color: #F2F0F1;
+      background-color: ${color.gray500};
     }
     .banner-contents-wrapper {
       padding: 24px 24px 0 24px;
@@ -72,7 +73,7 @@ export const StyledHeroBanner = styled.div`
     height: fit-content;
   }
   }
-@media screen and (max-width: 767px) {
+@media screen and (${device.tablet}) {
   .banner-contents-wrapper {
     display: flex;
     justify-content: center;

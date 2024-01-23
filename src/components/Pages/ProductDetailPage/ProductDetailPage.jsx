@@ -18,6 +18,7 @@ import { ProductContext } from "../../../contexts/productContext";
 import { useParams } from "react-router-dom";
 import { UserCartContext } from "../../../contexts/userCartContext";
 import { ErrorText } from "../../Atoms/ErrorText/ErrorText";
+import { buttonText, errorText, notificationText } from "../../../utils/constant/string-const";
 function ProductsDetailPage() {
   let [productData, setProductData] = useContext(ProductContext);
   const [userCart, setUserCart] = useContext(UserCartContext);
@@ -66,7 +67,7 @@ function ProductsDetailPage() {
   function addItemToCart() {
     if (!selectedSize) {
       setErrorTextVisible(true);
-      toast.error("Item unable to add item");
+      toast.error(notificationText.productItem.error);
       return;
     } else {
       setErrorTextVisible(false);
@@ -84,7 +85,7 @@ function ProductsDetailPage() {
       const updatedCart = [...userCart];
       updatedCart[existingItemIndex].quantity += quantity;
       setUserCart(updatedCart);
-      toast.error("item already present");
+      toast.error(notificationText.productItem.itemPresent);
     } else {
       // Item is not in the cart, add it
       setUserCart([
@@ -96,7 +97,7 @@ function ProductsDetailPage() {
           quantity: quantity,
         },
       ]);
-      toast.success("Item added to cart");
+      toast.success(notificationText.productItem.itemAdded);
     }
   }
 
@@ -129,7 +130,7 @@ function ProductsDetailPage() {
             />
             {errorTextVisible && (
               <ErrorText
-                text={"Please select a size"}
+                text={errorText.selectSizeText}
                 size={"small"}
                 color={"red"}
                 className={"error-message "}
@@ -142,7 +143,12 @@ function ProductsDetailPage() {
                 id={product.id}
                 itemFor={"product-page"}
               />
-              <Button text='Add to Cart' onClick={addItemToCart} />
+              <Button
+                text={buttonText.cartButtonTitle}
+                title={buttonText.cartButtonTitle}
+                onClick={addItemToCart}
+                primary={true}
+              />
             </div>
           </div>
           <div className='product-details'>

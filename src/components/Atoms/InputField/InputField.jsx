@@ -1,24 +1,27 @@
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { StyledInputField } from "./InputField.styled";
-import { CiMail } from "react-icons/ci";
+import { RiCoupon2Line } from "react-icons/ri";
 export const InputField = ({
-  placeholder,
+  placeHolder,
   inputFieldType,
   icon,
   onKeyDown,
   className,
+  onChange,
+  value,
   ...props
 }) => {
   return (
     <StyledInputField inputFieldType={inputFieldType} className={className}>
-      {inputFieldType === "search" ? <FaMagnifyingGlass /> : <CiMail />}
+      {inputFieldType === "search" ? <FaMagnifyingGlass /> : <RiCoupon2Line />}
       <input
         type='text'
+        value={value}
         className={`storybook-input-field ${inputFieldType}-input-field`}
-        placeholder={placeholder}
+        placeholder={placeHolder}
         onKeyDown={onKeyDown}
+        onChange={onChange}
         {...props}
       />
     </StyledInputField>
@@ -26,14 +29,12 @@ export const InputField = ({
 };
 
 InputField.propTypes = {
-  placeholder: PropTypes.string,
-  icon: PropTypes.string,
-  inputFieldType: PropTypes.oneOf(["search", "email"]).isRequired,
+  placeHolder: PropTypes.string,
+  inputFieldType: PropTypes.oneOf(["search", "coupon"]).isRequired,
   onChange: PropTypes.func,
 };
 
 InputField.defaultProps = {
-  placeholder: "placeholder",
-  icon: null,
+  placeHolder: "placeholder",
   onChange: undefined,
 };

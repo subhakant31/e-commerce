@@ -1,14 +1,16 @@
 import styled from "styled-components";
+import { color } from "../../../utils/constant/style-const";
 
 export const StyledLoader = styled.div`
   height: 100vh;
   width: 100vw;
   display: grid;
   place-content: center;
-  position: absolute;
+  position: fixed;
+  left: 0;
   top: 0;
   z-index: 1000;
-  background-color: #fff;
+  background-color: ${color.white};
   .loader {
     width: 48px;
     height: 48px;
@@ -23,13 +25,13 @@ export const StyledLoader = styled.div`
     position: absolute;
     inset: 0px;
     border-radius: 50%;
-    border: 5px solid black;
+    border: 5px solid ${color.black};
     animation: prixClipFix 2s linear infinite;
   }
   .loader::after {
     inset: 8px;
     transform: rotate3d(90, 90, 0, 180deg);
-    border-color: #ff3d00;
+    border-color: ${color.red};
   }
 
   @keyframes rotate {
