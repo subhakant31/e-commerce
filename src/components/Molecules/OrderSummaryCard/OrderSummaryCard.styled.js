@@ -39,10 +39,7 @@ export const StyledOrderSummary = styled.div`
   }
   .remove-coupon-btn {
     border: none;
-    border-bottom: 1px solid ${color.red100};
     cursor: pointer;
-    background-color: ${color.transparent};
-    color: ${color.red100};
   }
   .order-details p:last-child {
     border-top: 2px solid ${color.black100};
@@ -54,6 +51,15 @@ export const StyledOrderSummary = styled.div`
     margin: 0 24px;
     .order-button {
       flex-direction: column;
+    }
+  }
+  .remove-btn-wrapper {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+    @media screen and (${device.tablet}) {
+      flex-direction: column-reverse;
     }
   }
 `;

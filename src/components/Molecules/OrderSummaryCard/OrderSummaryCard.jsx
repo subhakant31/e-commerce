@@ -8,7 +8,10 @@ import { useContext, useMemo, useState } from "react";
 import { centsToDollars } from "../../../helperFunctions";
 import { availableCoupons } from "../../../data/couponsData";
 import { toast } from "react-toastify";
-import { buttonText, notificationText } from "../../../utils/constant/string-const";
+import {
+  buttonText,
+  notificationText,
+} from "../../../utils/constant/string-const";
 
 const OrderSummaryCard = () => {
   const [userCart] = useContext(UserCartContext);
@@ -99,11 +102,14 @@ const OrderSummaryCard = () => {
         </p>
         <p>
           Discount:{" "}
-          <span>
+          <span className="remove-btn-wrapper">
             {couponCodeApplied && (
-              <button className='remove-coupon-btn' onClick={removeCouponCode}>
-                Remove Coupon
-              </button>
+              <Button
+                className={"remove-coupon-btn"}
+                onClick={removeCouponCode}
+                type={"remove-coupon"}
+                text={notificationText.couponText}
+              ></Button>
             )}{" "}
             ${discountedAmount.toFixed(2)} (-{discount}%)
           </span>
@@ -120,7 +126,7 @@ const OrderSummaryCard = () => {
           <InputField
             placeholder={"enter coupon code"}
             onChange={(ev) => setCouponCode(ev.target.value)}
-            inputFieldType={'coupon'}
+            inputFieldType={"coupon"}
             value={couponCode}
             onKeyDown={applyCoupon}
           />

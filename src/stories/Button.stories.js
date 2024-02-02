@@ -12,6 +12,6 @@ export const Default = {
   args: {
     text: "shop now",
     title: "shop now",
-    primary: true,
+    type: "primary",
   },
 };

@@ -14,9 +14,15 @@ const ConfirmationDialogue = ({ onConfirm, onCancel, text }) => {
           <Button
             text={buttonText.confirmationButton.confirm}
             onClick={onConfirm}
+            type={"primary"}
             className={"confirmation-btn"}
           />
-          <Button text={buttonText.confirmationButton.notConfirm} onClick={onCancel} className={"confirmation-btn"} />
+          <Button
+            type={"secondary"}
+            text={buttonText.confirmationButton.notConfirm}
+            onClick={onCancel}
+            className={"confirmation-btn"}
+          />
         </div>
       </div>
     </StyledConfirmationDialogue>

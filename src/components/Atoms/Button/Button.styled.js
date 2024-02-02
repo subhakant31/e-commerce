@@ -15,14 +15,54 @@ function findSize(size) {
 }
 
 export const StyledButton = styled.div`
-  // margin-top: 32px;
   button {
-    background-color: ${(props) => (props.primary ? `${color.black}` : `${color.transparent}`)};
-    color: ${(props) => (props.primary ? `${color.white}` : `${color.black}`)};
-    border: 1px solid ${color.black};
-    border-radius: 62px;
-    cursor:pointer;
-    padding: 15px ${(props) => findSize(props.size)}px;
-    font-size: ${fontSize.font16};
+    ${(props) =>
+      props.type === "primary" &&
+      `background-color: ${color.black};
+      color : ${color.white};
+      border: 1px solid ${color.black};
+      border-radius : 62px;
+      cursor: pointer;
+      padding: 15px 67px;
+      font-size : ${fontSize.font16};
+      
+      `}
+    ${(props) =>
+      props.type === "secondary" &&
+      `background-color: ${color.transparent};
+        color : ${color.black};
+        border: 1px solid ${color.black};
+        border-radius : 62px;
+        cursor: pointer;
+        padding: 15px 67px;
+        font-size : ${fontSize.font16};
+        
+        `}
+        ${(props) =>
+      props.type === "remove-coupon" &&
+      `background-color: ${color.transparent};
+            color : ${color.red};
+            border:none;
+            border-bottom: 1px solid ${color.red};
+            cursor: pointer;
+            font-size : ${fontSize.font16};
+            
+            `}
+        ${(props) =>
+      props.type === "pagination" &&
+      ` 
+        font-size: ${fontSize.font24};
+        background-color: ${color.transparent};
+        color:${color.black};
+        display: grid;
+        place-content:center;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        border: none;
+        height: 36px;
+        width: 36px;
+        
+      `}
   }
 `;

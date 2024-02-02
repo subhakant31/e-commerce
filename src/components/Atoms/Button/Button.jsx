@@ -3,7 +3,7 @@ import { StyledButton } from "./Button.styled";
 
 export const Button = ({
   text,
-  primary,
+  type,
   size,
   onClick,
   className,
@@ -11,7 +11,7 @@ export const Button = ({
   ...props
 }) => {
   return (
-    <StyledButton primary={primary} className={className} onClick={onClick}>
+    <StyledButton type={type} className={className} onClick={onClick}>
       <button title={title}> {text}</button>
     </StyledButton>
   );
@@ -19,14 +19,13 @@ export const Button = ({
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(["remove-coupon", "primary", "secondary", "pagination"])
+    .isRequired,
   title: PropTypes.string,
-  primary: PropTypes.bool,
-  size: PropTypes.oneOf(["small", "medium", "large"]),
   onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
-  primary: true,
-  size: "medium",
+  type: "primary",
   onClick: undefined,
 };

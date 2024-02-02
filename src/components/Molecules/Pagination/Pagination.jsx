@@ -1,7 +1,13 @@
 import React from "react";
 import { StyledPagination } from "./Pagination.styled";
-
-const Pagination = ({ productsPerPage, totalProducts, paginate, currentPage }) => {
+import { scrollToTop } from "../../../helperFunctions";
+import { Button } from "../../Atoms/Button/Button";
+const Pagination = ({
+  productsPerPage,
+  totalProducts,
+  paginate,
+  currentPage,
+}) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
@@ -18,12 +24,15 @@ const Pagination = ({ productsPerPage, totalProducts, paginate, currentPage }) =
       <ul className='pagination'>
         {pageNumbers.map((number) => (
           <li key={number}>
-            <button
+            <Button
+              text={number}
               className={currentPage === number ? "active" : ""}
-              onClick={() => paginate(number)}
-            >
-              {number}
-            </button>
+              type={"pagination"}
+              onClick={() => {
+                scrollToTop();
+                paginate(number);
+              }}
+            ></Button>
           </li>
         ))}
       </ul>

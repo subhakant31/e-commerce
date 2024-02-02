@@ -37,10 +37,8 @@ function ProductsListPage(props) {
   const productsPerPage = 9;
 
   useEffect(() => {
-    setTimeout(() => {
-      setProductData(data);
-      setLoading(false);
-    }, 1000);
+    setProductData(data);
+    setLoading(false);
   }, []);
 
   const filteredProductsBySearch = productData?.sneakers

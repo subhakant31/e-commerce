@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, device } from '../../../utils/constant/style-const';
+import { color, device, fontSize } from '../../../utils/constant/style-const';
 
 export const FooterContainer = styled.footer`
   background-color: ${color.gray};
@@ -37,8 +37,10 @@ export const FooterContainer = styled.footer`
           color:${color.black};
         }
     }
-    h4 {
+    h3 {
       margin-bottom: 26px;
+      font-size:${fontSize.font16};
+      line-height: 16px;
     }
   }
   .footer-bottom {

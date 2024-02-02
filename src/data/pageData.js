@@ -17,9 +17,9 @@ export const headerData = {
     defaultImage: "./assets/hero-image.png",
     smallerImage: "./assets/hero-image-mobile.png",
     imageAlt: "man and a woman posing for image",
-    heading: "FIND CLOTHES THAT MATCHES YOUR STYLE",
+    heading: "FIND SHOES THAT MATCHES YOUR STYLE",
     subHeading:
-      "Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.",
+      "Browse through our diverse range of meticulously crafted shoes, designed to bring out your individuality and cater to your sense of style.",
     stats: [
       {
         title: "international brands",
@@ -71,7 +71,7 @@ export const footerData = {
   },
   about: {
     content:
-      "We have clothes that suits your style and which you’re proud to wear. From women to men.",
+      "We have shoes that suits your style and which you’re proud to wear. From women to men.",
   },
   links: [
     {

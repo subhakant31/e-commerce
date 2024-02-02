@@ -7,6 +7,7 @@ import TextParagraph from "../../Atoms/TextParagraph/TextParagraph";
 import { useNavigate } from "react-router-dom";
 import { buttonText } from "../../../utils/constant/string-const";
 import { device } from "../../../utils/constant/style-const";
+import { scrollToTop } from "../../../helperFunctions";
 
 function HeroBanner(props) {
   const heroBannerData = headerData.heroBanner;
@@ -22,10 +23,11 @@ function HeroBanner(props) {
             subText={true}
           ></TextParagraph>
           <Button
-            text= {buttonText.shopNow}
+            text={buttonText.shopNow}
             className='shop-now-btn'
             title={buttonText.shopNow}
             onClick={() => {
+              scrollToTop();
               navigate("/products");
             }}
           />

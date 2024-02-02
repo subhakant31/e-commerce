@@ -13,6 +13,7 @@ export const buttonText = {
 
 export const notificationText = {
   couponRemoved: "Coupon code removed",
+  couponText: "Remove coupon",
   orderSummaryNotification: {
     error: "Coupon unavailable",
   },

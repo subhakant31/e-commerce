@@ -2,9 +2,9 @@ import { StyledProductsDetail } from "./ProductDetailPage.styled";
 import { Heading } from "../../Atoms/Heading/Heading";
 import data from "../../../data/productsData";
 import { Button } from "../../Atoms/Button/Button";
-import ProductQuantity from "../../Atoms/ProductQuantity/ProductQuantity";
+import ProductQuantity from "../../Molecules/ProductQuantity/ProductQuantity";
 import TextParagraph from "../../Atoms/TextParagraph/TextParagraph";
-import ProductSizeRanges from "../../Atoms/ProductSizeRanges/ProductSizeRanges";
+import ProductSizeRanges from "../../Molecules/ProductSizeRanges/ProductSizeRanges";
 import ColorIcon from "../../Atoms/ColorIcon/ColorIcon";
 import Loader from "../../Atoms/Loader/Loader";
 import {
@@ -147,7 +147,7 @@ function ProductsDetailPage() {
                 text={buttonText.cartButtonTitle}
                 title={buttonText.cartButtonTitle}
                 onClick={addItemToCart}
-                primary={true}
+                type={'primary'}
               />
             </div>
           </div>

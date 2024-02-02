@@ -68,3 +68,13 @@ export function findAllAvailableBrands(products) {
 
   return allBrands;
 }
+
+/* 
+  @function : scrollToTop
+  @description : scrolls to the top of the page when this function is called
+  @returns : null
+  @param : null
+*/
+export function scrollToTop() {
+  window.scrollTo(0, 0);
+}

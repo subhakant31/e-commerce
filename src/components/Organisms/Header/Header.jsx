@@ -9,6 +9,7 @@ import { StyledHeader } from "./Header.styled";
 import { UserCartContext } from "../../../contexts/userCartContext";
 import { SearchQueryContext } from "../../../contexts/SearchQueryContext";
 import { BiCart } from "react-icons/bi";
+import { scrollToTop } from "../../../helperFunctions";
 
 function Header() {
   const [isSticky, setSticky] = useState(false);
@@ -70,6 +71,7 @@ function Header() {
                 <NavLink
                   to={item.href}
                   onClick={() => {
+                    scrollToTop();
                     setIsMenuOpen(false);
                   }}
                 >
