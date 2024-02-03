@@ -1,6 +1,6 @@
 import { StyledCard } from "./Card.styled";
 import { Link } from "react-router-dom";
-import { centsToDollars } from "../../../helperFunctions";
+import { centsToDollars, scrollToTop } from "../../../helperFunctions";
 export const Card = ({
   image,
   altText,
@@ -16,6 +16,7 @@ export const Card = ({
           to={`/products/${productId}`}
           className='product'
           data-id={productId}
+          onClick={scrollToTop}
         >
           <div className='image-container'>
             <img src={image} alt={altText} />

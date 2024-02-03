@@ -88,7 +88,12 @@ function Header() {
         onKeyDown={handleQuerySubmit}
       ></InputField>
       <div className='icon-button-container'>
-        <Link to={"/usercart"} className='icon icon-wrapper' title='show cart'>
+        <Link
+          to={"/usercart"}
+          className='icon icon-wrapper'
+          title='show cart'
+          onClick={scrollToTop}
+        >
           <BiCart />
           <div className='count-indicator'>{userCart.length}</div>
         </Link>
